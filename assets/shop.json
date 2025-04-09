@@ -1,25 +1,45 @@
 [{
     "name" : "Curseur",
+    "image": {
+            "src": "../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png",
+            "alt": "pickaxe "
+        },
     "price": 10,
     "cps"  : 0.1,
     "owned": 0
 },{
     "name" : "Mineur Apprenti",
+    "image": {
+            "src": "../assets/mining-removebg-preview.png",
+            "alt": "Mineur apprenti"
+        },
     "price": 100,
     "cps"  : 1,
     "owned": 0
 },{
     "name" : "Dynamite",
+    "image": {
+            "src": "../assets/pixel-art-dynamite-lit-dynamite-sticks-vector-icon-8bit-game-white-background_360488-817-removebg-preview.png",
+            "alt": "dynamite"
+        },
     "price": 1000,
     "cps"  : 10,
     "owned": 0
 },{
     "name" : "Foreuse Mécanique",
+    "image": {
+        "src": "../assets/foreuse-removebg-preview.png",
+        "alt": "foreuse"
+    },
     "price": 10000,
     "cps"  : 100,
     "owned": 0
 },{
-    "name" : "Excavatrice Géante",
+    "name" : "Fonderie",
+    "image": {
+      "src": "../assets/fonderie-removebg-preview.png",
+      "alt": "fonderie "
+    },
     "price": 100000,
     "cps"  : 1000,
     "owned": 0

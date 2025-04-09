@@ -1,0 +1,22 @@
+[
+    {
+      "name": "Pioche renforcée",
+      "price": 50,
+      "image": {
+          "src": "../assets/pixeaxe upgrade1.png",
+          "alt": "pickaxe upgrades 1"
+      },
+      "description":"Augmente le nbe pts/click de 1",
+      "cpc":1
+    },
+    {
+      "name": "Lampe de mineur",
+      "price": 200,
+      "image": {
+          "src": "../assets/helmet.png",
+          "alt": "pickaxe upgrades 1"
+      },
+      "description":"Augmente le nbe pts/click de 5",
+      "cpc":5
+    }
+  ]
