@@ -1,0 +1,55 @@
+{
+    "upgrades": [
+      {
+        "name": "Pioche renforcée",
+        "cost": 50,
+        "image": {
+            "src": "../assets/pixeaxe upgrade1.png",
+            "alt": "pickaxe upgrades 1"
+        }
+      },
+      {
+        "name": "Lampe de mineur",
+        "cost": 200,
+        "image": {
+            "src": "../assets/helmet.png",
+            "alt": "pickaxe upgrades 1"
+        }
+      }
+    ],
+    "buildings": [
+      {
+        "name": "Pioche",
+        "cost": 15,
+        "icon": "fa-solid fa-pickaxe",
+        "count": 0
+      },
+      {
+        "name": "Mineur apprenti",
+        "cost": 100,
+        "image": {
+            "src": "../assets/helmet.png",
+            "alt": "pickaxe upgrades 1"
+        }
+        "count": 0
+      },
+      {
+        "name": "Dynamite",
+        "cost": 1000,
+        "icon": "fa-solid fa-bomb",
+        "count": 0
+      },
+      {
+        "name": "Foreuse mécanique",
+        "cost": 10000,
+        "icon": "fa-solid fa-screwdriver-wrench",
+        "count": 0
+      },
+      {
+        "name": "Excavatrice géante",
+        "cost": 100000,
+        "icon": "fa-solid fa-truck-monster",
+        "count": 0
+      }
+    ]
+  }

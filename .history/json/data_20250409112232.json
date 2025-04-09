@@ -1,0 +1,64 @@
+{
+    "upgrades": [
+      {
+        "name": "Pioche renforcée",
+        "cost": 50,
+        "image": {
+            "src": "../assets/pixeaxe upgrade1.png",
+            "alt": "pickaxe upgrades 1"
+        }
+      },
+      {
+        "name": "Lampe de mineur",
+        "cost": 200,
+        "image": {
+            "src": "../assets/helmet.png",
+            "alt": "pickaxe upgrades 1"
+        }
+      }
+    ],
+    "buildings": [
+      {
+        "name": "Pioche",
+        "cost": 15,
+        "image": {
+            "src": "../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png",
+            "alt": "pickaxe "
+        },
+        "count": 0
+      },
+      {
+        "name": "Mineur apprenti",
+        "cost": 100,
+        "image": {
+            "src": "../assets/mining-removebg-preview.png",
+            "alt": "Mineur apprenti"
+        },
+        "count": 0
+      },
+      {
+        "name": "Dynamite",
+        "cost": 1000,
+        "image": {
+            "src": "../assets/pixel-art-dynamite-lit-dynamite-sticks-vector-icon-8bit-game-white-background_360488-817-removebg-preview.png",
+            "alt": "dynamite"
+        },
+        "count": 0
+      },
+      {
+        "name": "Foreuse mécanique",
+        "cost": 10000,
+        "image": {
+            "src": "../assets/foreuse-removebg-preview.png",,
+            "alt": "foreuse"
+        },
+        "count": 0
+      },
+      {
+        "name": "Excavatrice géante",
+        "cost": 100000,
+        "icon": "fa-solid fa-truck-monster",
+        "count": 0
+      }
+    ]
+  }

@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Minecraft";
+    background-color: #f0e4d7;
+    color: white;
+    display: flex;
+    height: 100vh;
+    overflow: visible;
+}
+
+@font-face {
+    font-family: "Minecraft";
+    src: url("../font/Minecraft.ttf") format('truetype');
+}
+
+/* Conteneur principal */
+#gameWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Section gauche (cookie principal) */
+#sectionLeft {
+    flex: 0 0 70%;
+    background-image: url(../assets/fond.jpg);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #8d6e63;
+    cursor: url('../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png') 16 16, auto;
+    position: relative;
+    z-index: 1; /* z-index bas pour que le tooltip passe devant */
+}
+
+#leftBeam {
+    width: 100%;
+    height: 2px;
+    background-color: #8d6e63;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+#cookieCounter {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+#cookiePerSecond {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#cookie {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s;
+    margin-top: 50px;
+}
+
+#cookie img {
+    height: 150%;
+}
+
+#cookie:hover {
+    transform: scale(1.05);
+}
+
+#cookie:active {
+    transform: scale(0.95);
+}
+
+
+/* Section droite (améliorations et boutique) */
+#sectionRight {
+    flex: 0 0 30%;
+    background-color: #d7ccc8;
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 2px solid #8d6e63;
+    position: relative;
+    z-index: 2; /* z-index plus élevé pour la section droite */
+}
+
+#rightBeam {
+    width: 100%;
+    height: 2px;
+    background-color: #8d6e63;
+    margin-bottom: 20px;
+}
+
+/* Section upgrade */
+#upgradeTitle {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#upgrade {
+    background-color: #5d4037;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.upgrade-item {
+    background-color: #6d4c41;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    z-index: 5;
+}
+
+.upgrade-item i {
+    font-size: 1.5em;
+    color: white;
+}
+
+.upgrade-item:hover {
+    background-color: #4a2c25;
+    transform: scale(1.1);
+}
+
+.upgrade-item .tooltip {
+    visibility: hidden;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 9999; 
+    right: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+
+.upgrade-item:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Section buildings */
+#buildingsTitle {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#buildingsMaster {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.building {
+    background-color: #8d6e63;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.building:hover {
+    background-color: #6d4c41;
+    transform: scale(1.02);
+}
+
+.building-icon {
+    flex: 0 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.building-icon i {
+    font-size: 1.5em;
+    color: white;
+}
+
+.building-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.building-name {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.building-cost {
+    font-size: 0.8em;
+    color: #d4a017;
+}
+
+.building-count {
+    flex: 0 0 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color: #d4a017;
+}
+
+/* Animations */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
