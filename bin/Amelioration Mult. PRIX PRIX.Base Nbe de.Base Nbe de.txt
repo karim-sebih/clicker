@@ -1,0 +1,12 @@
+        Amelioration    Mult. PRIX  PRIX.Base   Nbe de {Money/S}.Base   Mult {Money/S}
+
+1 -------- Coupelle     X1,2        100         +0,1                    x1,2
+2 -------- Plot         X1,2        1200        +0,5                    x1,2
+3 -------- Joueur       X1,5        15 k        +5                      x1,5
+4 -------- Dossard      x1,5        80 k        +130                    x1,5
+5 -------- Maillot      x1,5        500 k       +1 k                    x1,5
+
+6 -------- Terrain      X15         20 M        +20 k                   X5
+
+7 -------- Equipe       X5          150 M       
+

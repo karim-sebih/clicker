@@ -41,6 +41,11 @@ body{
 }
 .unbuyable{
     color: red;
+    transition: .4s;
+}
+.buyable{
+    color: green;
+    transition: .4s;
 }
 .item-owned{
     position: absolute;
