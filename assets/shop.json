@@ -1,0 +1,26 @@
+[{
+    "name" : "Curseur",
+    "price": 10,
+    "cps"  : 0.1,
+    "owned": 0
+},{
+    "name" : "Mineur Apprenti",
+    "price": 100,
+    "cps"  : 1,
+    "owned": 0
+},{
+    "name" : "Dynamite",
+    "price": 1000,
+    "cps"  : 10,
+    "owned": 0
+},{
+    "name" : "Foreuse Mécanique",
+    "price": 10000,
+    "cps"  : 100,
+    "owned": 0
+},{
+    "name" : "Excavatrice Géante",
+    "price": 100000,
+    "cps"  : 1000,
+    "owned": 0
+}]

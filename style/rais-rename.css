@@ -1,0 +1,52 @@
+body{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+#clicker{
+    display: inline-block;
+    position: absolute;
+    z-index: 3;
+    border-radius: 100%;
+    height: 165px;
+    width: 165px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    background-color: brown;
+}
+#clicker:active{
+    transition: 0.05s;
+    height: 175px;
+    width: 175px;
+}
+#nbe-pts{
+    z-index: 8;
+    font-size: 50px;
+}
+#left{
+    width: calc(100% - 250px);
+}
+#right{
+    width: 250px;
+}
+.shop-item{
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background-color: #BBBBBB;
+}
+.unbuyable{
+    color: red;
+}
+.item-owned{
+    position: absolute;
+    right: 0;
+}
+.item-name{
+    font-size: 20px;
+    margin-right: 10px;
+}
