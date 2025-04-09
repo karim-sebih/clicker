@@ -7,7 +7,8 @@
             "src": "../assets/pixeaxe upgrade1.png",
             "alt": "pickaxe upgrades 1"
         },
-        "description":"Augmente le cps de blabla"
+        "descrition":
+        ealeaze
       },
       {
         "name": "Lampe de mineur",
@@ -15,8 +16,7 @@
         "image": {
             "src": "../assets/helmet.png",
             "alt": "pickaxe upgrades 1"
-        },
-        "description":"recolte multiplié par blabla"
+        }
       }
     ],
     "buildings": [

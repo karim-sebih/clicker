@@ -10,7 +10,7 @@ body {
     color: white;
     display: flex;
     height: 100vh;
-    overflow: hidden;
+    overflow: hide;
 }
 
 @font-face {
@@ -87,8 +87,6 @@ body {
     border-left: 2px solid #8d6e63;
     position: relative;
     z-index: 2;
-    
-    
 }
 
 #rightBeam {
