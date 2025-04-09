@@ -10,7 +10,7 @@ body {
     color: white;
     display: flex;
     height: 100vh;
-    overflow: visible;
+    overflow: hidden;
 }
 
 @font-face {
@@ -23,6 +23,7 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
+    position: relative; /* Ajouté pour permettre au tooltip de s'afficher correctement */
 }
 
 /* Section gauche (cookie principal) */
@@ -44,7 +45,6 @@ body {
     height: 2px;
     background-color: #8d6e63;
     margin-bottom: 20px;
-    z-index: 1;
 }
 
 #cookieCounter {
@@ -79,14 +79,15 @@ body {
     transform: scale(0.95);
 }
 
+/* Section droite (améliorations et boutique) */
 #sectionRight {
     flex: 0 0 30%;
     background-color: #d7ccc8;
     padding: 20px;
-    overflow: visible; 
+    overflow-y: auto;
     border-left: 2px solid #8d6e63;
     position: relative;
-    z-index: 2;
+    z-index: 2; /* z-index plus élevé pour la section droite */
 }
 
 #rightBeam {
@@ -112,6 +113,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    position: relative; /* Ajouté pour permettre au tooltip de s'afficher correctement */
 }
 
 .upgrade-item {
@@ -125,7 +127,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     position: relative;
-    z-index: 5;
+    z-index: 3; /* z-index pour l'icône */
 }
 
 .upgrade-item i {
@@ -146,16 +148,15 @@ body {
     padding: 5px 10px;
     border-radius: 5px;
     position: absolute;
-    z-index: 9999; 
-    right: 110%;
+    z-index: 100000; /* z-index très élevé pour passer devant tout */
+    right: 100%; /* Position à gauche de l'icône */
     top: 50%;
-    transform: translateY(-50%);
-    white-space: nowrap;
+    transform: translateY(-50%); /* Centré verticalement */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
     opacity: 0;
     transition: opacity 0.3s;
-    pointer-events: none;
+    margin-right: 10px; /* Marge pour éviter que le tooltip ne soit collé à l'icône */
 }
-
 
 .upgrade-item:hover .tooltip {
     visibility: visible;

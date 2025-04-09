@@ -10,7 +10,7 @@ body {
     color: white;
     display: flex;
     height: 100vh;
-    overflow: visible;
+    overflow: hidden;
 }
 
 @font-face {
@@ -23,6 +23,7 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 /* Section gauche (cookie principal) */
@@ -36,7 +37,7 @@ body {
     border-right: 2px solid #8d6e63;
     cursor: url('../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png') 16 16, auto;
     position: relative;
-    z-index: 1; /* z-index bas pour que le tooltip passe devant */
+    z-index: 1;
 }
 
 #leftBeam {
@@ -44,7 +45,6 @@ body {
     height: 2px;
     background-color: #8d6e63;
     margin-bottom: 20px;
-    z-index: 1;
 }
 
 #cookieCounter {
@@ -79,11 +79,12 @@ body {
     transform: scale(0.95);
 }
 
+/* Section droite (améliorations et boutique) */
 #sectionRight {
     flex: 0 0 30%;
     background-color: #d7ccc8;
     padding: 20px;
-    overflow: visible; 
+    overflow-y: auto;
     border-left: 2px solid #8d6e63;
     position: relative;
     z-index: 2;
@@ -112,6 +113,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    position: relative;
 }
 
 .upgrade-item {
@@ -125,7 +127,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     position: relative;
-    z-index: 5;
+    z-index: 3;
 }
 
 .upgrade-item i {
@@ -145,17 +147,13 @@ body {
     text-align: center;
     padding: 5px 10px;
     border-radius: 5px;
-    position: absolute;
-    z-index: 9999; 
-    right: 110%;
-    top: 50%;
-    transform: translateY(-50%);
+    position: fixed; /* Changé de absolute à fixed pour positionner par rapport à la fenêtre */
+    z-index: 1000; /* z-index très élevé pour passer devant tout */
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s;
-    pointer-events: none;
+    margin-right: 10px;
 }
-
 
 .upgrade-item:hover .tooltip {
     visibility: visible;

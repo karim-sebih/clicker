@@ -83,7 +83,7 @@ body {
     flex: 0 0 30%;
     background-color: #d7ccc8;
     padding: 20px;
-    overflow: visible; 
+    overflow: visible; /* ✅ autorise les tooltips à dépasser */
     border-left: 2px solid #8d6e63;
     position: relative;
     z-index: 2;

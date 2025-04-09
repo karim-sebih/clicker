@@ -10,7 +10,7 @@ body {
     color: white;
     display: flex;
     height: 100vh;
-    overflow: visible;
+    overflow: hidden;
 }
 
 @font-face {
@@ -35,8 +35,6 @@ body {
     align-items: center;
     border-right: 2px solid #8d6e63;
     cursor: url('../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png') 16 16, auto;
-    position: relative;
-    z-index: 1; /* z-index bas pour que le tooltip passe devant */
 }
 
 #leftBeam {
@@ -44,7 +42,6 @@ body {
     height: 2px;
     background-color: #8d6e63;
     margin-bottom: 20px;
-    z-index: 1;
 }
 
 #cookieCounter {
@@ -79,14 +76,13 @@ body {
     transform: scale(0.95);
 }
 
+/* Section droite (améliorations et boutique) */
 #sectionRight {
     flex: 0 0 30%;
     background-color: #d7ccc8;
     padding: 20px;
-    overflow: visible; 
+    overflow-y: auto;
     border-left: 2px solid #8d6e63;
-    position: relative;
-    z-index: 2;
 }
 
 #rightBeam {
@@ -124,8 +120,9 @@ body {
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
     position: relative;
-    z-index: 5;
 }
 
 .upgrade-item i {
@@ -136,6 +133,7 @@ body {
 .upgrade-item:hover {
     background-color: #4a2c25;
     transform: scale(1.1);
+    animation: pulse 0.5s ease infinite;
 }
 
 .upgrade-item .tooltip {
@@ -143,19 +141,17 @@ body {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 5px 10px;
+    padding: 5px;
     border-radius: 5px;
     position: absolute;
-    z-index: 9999; 
-    right: 110%;
-    top: 50%;
-    transform: translateY(-50%);
+    z-index: 1;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s;
-    pointer-events: none;
 }
-
 
 .upgrade-item:hover .tooltip {
     visibility: visible;
@@ -219,7 +215,7 @@ body {
 
 .building-cost {
     font-size: 0.8em;
-    color: #d4a017;
+    color: #d4a017; /* Couleur dorée pour le coût */
 }
 
 .building-count {
@@ -227,10 +223,21 @@ body {
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
-    color: #d4a017;
+    color: #d4a017; /* Couleur dorée pour le nombre */
 }
 
 /* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes slideIn {
     0% {
         opacity: 0;
@@ -239,5 +246,14 @@ body {
     100% {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
     }
 }

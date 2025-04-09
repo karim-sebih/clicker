@@ -10,7 +10,7 @@ body {
     color: white;
     display: flex;
     height: 100vh;
-    overflow: visible;
+    overflow: v;
 }
 
 @font-face {
@@ -79,14 +79,15 @@ body {
     transform: scale(0.95);
 }
 
+/* Section droite (améliorations et boutique) */
 #sectionRight {
     flex: 0 0 30%;
     background-color: #d7ccc8;
     padding: 20px;
-    overflow: visible; 
+    overflow-y: auto;
     border-left: 2px solid #8d6e63;
     position: relative;
-    z-index: 2;
+    z-index: 2; /* z-index plus élevé pour la section droite */
 }
 
 #rightBeam {
@@ -125,7 +126,6 @@ body {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     position: relative;
-    z-index: 5;
 }
 
 .upgrade-item i {
@@ -146,16 +146,14 @@ body {
     padding: 5px 10px;
     border-radius: 5px;
     position: absolute;
-    z-index: 9999; 
-    right: 110%;
+    z-index: 10; /* z-index élevé pour passer devant #sectionLeft */
+    right: 110%; /* Position à gauche de l'icône */
     top: 50%;
-    transform: translateY(-50%);
-    white-space: nowrap;
+    transform: translateY(-50%); /* Centré verticalement */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
     opacity: 0;
     transition: opacity 0.3s;
-    pointer-events: none;
 }
-
 
 .upgrade-item:hover .tooltip {
     visibility: visible;
