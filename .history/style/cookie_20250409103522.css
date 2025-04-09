@@ -240,8 +240,8 @@ body {
 }
 
 .building-image {
-    width: 42px; /* Taille spécifique à définir */
-    height:42px;
+    width: 0px; /* Taille spécifique à définir */
+    height: 60px;
     object-fit: contain; /* Garde l'aspect de l'image */
 }
 

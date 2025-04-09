@@ -240,13 +240,12 @@ body {
 }
 
 .building-image {
-    width: 42px; /* Taille spécifique à définir */
-    height:42px;
-    object-fit: contain; /* Garde l'aspect de l'image */
+    width: 2px; /* Ajustez la taille selon vos besoins */
+    height: 32px;
+    object-fit: contain;
+    background-color: none
+    ;
 }
-
-
-
 /* Animations */
 @keyframes slideIn {
     0% {

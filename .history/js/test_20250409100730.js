@@ -5,22 +5,13 @@ async function loadGameData() {
         const response = await fetch('../json/data.json');
         const data = await response.json();
 
-        // Remplir la section "upgrade" avec des icônes ou images
+        // Remplir la section "upgrade" avec des icônes
         const upgradeContainer = document.getElementById('upgrade');
         data.upgrades.forEach(upgrade => {
             const upgradeItem = document.createElement('div');
             upgradeItem.classList.add('upgrade-item');
-
-            // Vérifier si une image est définie, sinon utiliser l'icône
-            let iconOrImage;
-            if (upgrade.image && upgrade.image.src) {
-                iconOrImage = `<img src="${upgrade.image.src}" alt="${upgrade.image.alt}" class="upgrade-image">`;
-            } else {
-                iconOrImage = `<i class="${upgrade.icon}"></i>`;
-            }
-
             upgradeItem.innerHTML = `
-                ${iconOrImage}
+                <i class="${upgrade.image}"></i>
                 <div class="tooltip">
                     ${upgrade.name} - ${upgrade.cost} ressources
                 </div>
@@ -28,23 +19,14 @@ async function loadGameData() {
             upgradeContainer.appendChild(upgradeItem);
         });
 
-        // Remplir la section "buildingsMaster" avec image ou icône
+        // Remplir la section "buildingsMaster"
         const buildingsContainer = document.getElementById('buildingsMaster');
         data.buildings.forEach(building => {
             const buildingItem = document.createElement('div');
             buildingItem.classList.add('building');
-
-            // Vérifier si une image est définie, sinon utiliser l'icône
-            let iconOrImage;
-            if (building.image && building.image.src) {
-                iconOrImage = `<img src="${building.image.src}" alt="${building.image.alt}" class="building-image">`;
-            } else {
-                iconOrImage = `<i class="${building.icon}"></i>`;
-            }
-
             buildingItem.innerHTML = `
                 <div class="building-icon">
-                    ${iconOrImage}
+                    <i class="${building.icon}"></i>
                 </div>
                 <div class="building-info">
                     <span class="building-name">${building.name}</span>

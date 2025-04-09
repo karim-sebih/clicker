@@ -49,18 +49,15 @@
         "name": "Foreuse mécanique",
         "cost": 10000,
         "image": {
-            "src": "../assets/foreuse-removebg-preview.png",
+            "src": "../assets/foreuse-removebg-preview.png" h,
             "alt": "foreuse"
         },
         "count": 0
       },
       {
-        "name": "Fonderie ",
+        "name": "Excavatrice géante",
         "cost": 100000,
-        "image": {
-          "src": "../assets/fonderie-removebg-preview.png",
-          "alt": "fonderie "
-        },
+        "icon": "fa-solid fa-truck-monster",
         "count": 0
       }
     ]

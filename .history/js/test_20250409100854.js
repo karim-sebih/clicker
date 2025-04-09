@@ -28,23 +28,14 @@ async function loadGameData() {
             upgradeContainer.appendChild(upgradeItem);
         });
 
-        // Remplir la section "buildingsMaster" avec image ou icône
+        // Remplir la section "buildingsMaster" (inchangée)
         const buildingsContainer = document.getElementById('buildingsMaster');
         data.buildings.forEach(building => {
             const buildingItem = document.createElement('div');
             buildingItem.classList.add('building');
-
-            // Vérifier si une image est définie, sinon utiliser l'icône
-            let iconOrImage;
-            if (building.image && building.image.src) {
-                iconOrImage = `<img src="${building.image.src}" alt="${building.image.alt}" class="building-image">`;
-            } else {
-                iconOrImage = `<i class="${building.icon}"></i>`;
-            }
-
             buildingItem.innerHTML = `
                 <div class="building-icon">
-                    ${iconOrImage}
+                    <i class="${building.icon}"></i>
                 </div>
                 <div class="building-info">
                     <span class="building-name">${building.name}</span>

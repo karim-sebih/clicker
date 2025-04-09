@@ -163,13 +163,7 @@ body {
 }
 
 
-.upgrade-image {
-    width: 32px; /* Ajustez la taille selon vos besoins */
-    height: 32px;
-    object-fit: contain;
-    background-color: none
-    ;
-}
+
 
 /* Section buildings */
 #buildingsTitle {
@@ -238,14 +232,6 @@ body {
     text-align: center;
     color: #d4a017;
 }
-
-.building-image {
-    width: 42px; /* Taille spécifique à définir */
-    height:42px;
-    object-fit: contain; /* Garde l'aspect de l'image */
-}
-
-
 
 /* Animations */
 @keyframes slideIn {

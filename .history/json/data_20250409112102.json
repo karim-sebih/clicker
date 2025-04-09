@@ -23,7 +23,7 @@
         "cost": 15,
         "image": {
             "src": "../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png",
-            "alt": "pickaxe "
+            "alt": "pickaxe upgrades 1"
         },
         "count": 0
       },
@@ -32,7 +32,7 @@
         "cost": 100,
         "image": {
             "src": "../assets/mining-removebg-preview.png",
-            "alt": "Mineur apprenti"
+            "alt": "pickaxe upgrades 1"
         },
         "count": 0
       },
@@ -41,7 +41,7 @@
         "cost": 1000,
         "image": {
             "src": "../assets/pixel-art-dynamite-lit-dynamite-sticks-vector-icon-8bit-game-white-background_360488-817-removebg-preview.png",
-            "alt": "dynamite"
+            "alt": "pickaxe upgrades 1"
         },
         "count": 0
       },
@@ -49,18 +49,15 @@
         "name": "Foreuse mécanique",
         "cost": 10000,
         "image": {
-            "src": "../assets/foreuse-removebg-preview.png",
+            "src": "../assets/foreuse.jpg",
             "alt": "foreuse"
         },
         "count": 0
       },
       {
-        "name": "Fonderie ",
+        "name": "Excavatrice géante",
         "cost": 100000,
-        "image": {
-          "src": "../assets/fonderie-removebg-preview.png",
-          "alt": "fonderie "
-        },
+        "icon": "fa-solid fa-truck-monster",
         "count": 0
       }
     ]

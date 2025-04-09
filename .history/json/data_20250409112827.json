@@ -55,12 +55,9 @@
         "count": 0
       },
       {
-        "name": "Fonderie ",
+        "name": "fonder",
         "cost": 100000,
-        "image": {
-          "src": "../assets/fonderie-removebg-preview.png",
-          "alt": "fonderie "
-        },
+        "icon": "fa-solid fa-truck-monster",
         "count": 0
       }
     ]

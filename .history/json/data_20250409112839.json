@@ -55,11 +55,11 @@
         "count": 0
       },
       {
-        "name": "Fonderie ",
-        "cost": 100000,
+        "name": "Fonderie mobile",
+        "cost": 75000,
         "image": {
-          "src": "../assets/fonderie-removebg-preview.png",
-          "alt": "fonderie "
+          "src": "../assets/fonderie-mobile.png",
+          "alt": "fonderie mobile"
         },
         "count": 0
       }
