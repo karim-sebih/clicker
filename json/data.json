@@ -3,6 +3,7 @@
       {
         "name": "Pioche renforcée",
         "cost": 50,
+        "effect": 1,
         "image": {
             "src": "../assets/pixeaxe upgrade1.png",
             "alt": "pickaxe upgrades 1"
@@ -11,6 +12,7 @@
       {
         "name": "Lampe de mineur",
         "cost": 200,
+        "effect": 1,
         "image": {
             "src": "../assets/helmet.png",
             "alt": "pickaxe upgrades 1"
@@ -21,6 +23,7 @@
       {
         "name": "Pioche",
         "cost": 15,
+        "effect": 1,
         "image": {
             "src": "../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png",
             "alt": "pickaxe "
@@ -30,6 +33,7 @@
       {
         "name": "Mineur apprenti",
         "cost": 100,
+        "effect": 1,
         "image": {
             "src": "../assets/mining-removebg-preview.png",
             "alt": "Mineur apprenti"
@@ -39,6 +43,7 @@
       {
         "name": "Dynamite",
         "cost": 1000,
+        "effect": 1,
         "image": {
             "src": "../assets/pixel-art-dynamite-lit-dynamite-sticks-vector-icon-8bit-game-white-background_360488-817-removebg-preview.png",
             "alt": "dynamite"
@@ -48,6 +53,7 @@
       {
         "name": "Foreuse mécanique",
         "cost": 10000,
+        "effect": 1,
         "image": {
             "src": "../assets/foreuse-removebg-preview.png",
             "alt": "foreuse"
@@ -57,6 +63,7 @@
       {
         "name": "Fonderie ",
         "cost": 100000,
+        "effect": 1,
         "image": {
           "src": "../assets/fonderie-removebg-preview.png",
           "alt": "fonderie "
