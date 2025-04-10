@@ -22,7 +22,7 @@ async function loadGameData() {
             upgradeItem.innerHTML = `
                 ${iconOrImage}
                 <div class="tooltip">
-                    ${upgrade.name} - ${upgrade.cost} ressources <hr></br>
+                u    ${upgrade.name} - ${upgrade.cost} ressources <hr></br>
                     ${upgrade.description}
                 </div>
             `;
