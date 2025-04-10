@@ -128,7 +128,9 @@ body {
     transition: background-color 0.3s, transform 0.3s;
     position: relative;
     z-index: 5;
-
+    pointer-events: auto;
+    cursor: default;
+    padding: 0; /* Supprimer tout padding */
 }
 
 .upgrade-item i {
@@ -141,6 +143,16 @@ body {
     transform: scale(1.1);
 }
 
+.upgrade-image, .upgrade-item i {
+    width: 37px; /* Taille cohérente */
+    height: 37px;
+    object-fit: contain; /* Pour les images */
+    font-size: 1.5em; /* Pour les icônes FontAwesome */
+    color: white; /* Pour les icônes */
+    cursor: pointer; /* Indique que l'icône est cliquable */
+    pointer-events: auto; /* Assure que l'icône capte les clics */
+    z-index: 15; /* Au-dessus du conteneur */
+}
 
 .upgrade-item .tooltip {
     display: none;
@@ -158,7 +170,6 @@ body {
     transition: opacity 0.3s;
     pointer-events: none;
 }
-
 
 .upgrade-item:hover .tooltip {
     display: block;

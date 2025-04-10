@@ -125,10 +125,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     position: relative;
     z-index: 5;
-
 }
 
 .upgrade-item i {
@@ -137,14 +137,13 @@ body {
 }
 
 .upgrade-item:hover {
-    background-color: #4a2c25;
+    background-color: #444a25;
     transform: scale(1.1);
 }
 
-
 .upgrade-item .tooltip {
     display: none;
-    background-color: #290202;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 5px 10px;
@@ -166,8 +165,8 @@ body {
 
 
 .upgrade-image {
-    width: 37px; /* Ajustez la taille selon vos besoins */
-    height: 37px;
+    width: 32px; /* Ajustez la taille selon vos besoins */
+    height: 32px;
     object-fit: contain;
     background-color: none
     ;

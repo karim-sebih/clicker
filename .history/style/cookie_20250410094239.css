@@ -69,7 +69,6 @@ body {
 
 #cookie img {
     height: 150%;
-    
 }
 
 #cookie:hover {
@@ -116,7 +115,6 @@ body {
     flex-wrap: wrap;
     gap: 10px;
 }
-
 .upgrade-item {
     background-color: #6d4c41;
     width: 40px;
@@ -125,12 +123,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     position: relative;
     z-index: 5;
-
 }
-
 .upgrade-item i {
     font-size: 1.5em;
     color: white;
@@ -140,34 +137,36 @@ body {
     background-color: #4a2c25;
     transform: scale(1.1);
 }
-
-
 .upgrade-item .tooltip {
-    display: none;
-    background-color: #290202;
+    visibility: hidden;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 5px 10px;
     border-radius: 5px;
     position: absolute;
     z-index: 9999;
-    top: 125%;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 110%;
+    top: 50%;
+    transform: translateY(-50%);
     white-space: nowrap;
+    opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
-}
-
-
-.upgrade-item:hover .tooltip {
-    display: block;
+    font-size: 0.9em; /* Taille de police plus petite pour le tooltip */
 }
 
 
 .upgrade-image {
-    width: 37px; /* Ajustez la taille selon vos besoins */
-    height: 37px;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    background-color: transparent; /* Correction de la syntaxe */
+}
+
+.upgrade-image {
+    width: 32px; /* Ajustez la taille selon vos besoins */
+    height: 32px;
     object-fit: contain;
     background-color: none
     ;

@@ -125,10 +125,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     position: relative;
     z-index: 5;
-
 }
 
 .upgrade-item i {
@@ -140,7 +140,6 @@ body {
     background-color: #4a2c25;
     transform: scale(1.1);
 }
-
 
 .upgrade-item .tooltip {
     display: none;

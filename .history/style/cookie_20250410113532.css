@@ -128,7 +128,8 @@ body {
     transition: background-color 0.3s, transform 0.3s;
     position: relative;
     z-index: 5;
-
+    pointer-events: auto; /* Permet les clics sur les enfants */
+    cursor: default; /* Pas de curseur pointer sur le conteneur */
 }
 
 .upgrade-item i {
@@ -140,7 +141,6 @@ body {
     background-color: #4a2c25;
     transform: scale(1.1);
 }
-
 
 .upgrade-item .tooltip {
     display: none;
