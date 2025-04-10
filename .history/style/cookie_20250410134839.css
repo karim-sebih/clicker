@@ -34,6 +34,7 @@ body {
     flex-direction: column;
     align-items: center;
     border-right: 2px solid #8d6e63;
+   
     position: relative;
     z-index: 1; /* z-index bas pour que le tooltip passe devant */
 }
@@ -257,66 +258,4 @@ body {
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-
-
-/* ======================= Cookie Click Animation ======================= */
-/* ======================= Floating Text Animation ======================= */
-/* This styles the floating text that appears after clicking, 
-   making it rise up and fade out */
-   .floating-text {
-    position: fixed; /* Keeps the text in the same place regardless of scrolling */
-    color: #d4a017; /* Sets the text color (gold-like shade) */
-    font-size: 1.9em; /* Makes the text larger */
-    font-weight: bold; /* Makes the text thicker for emphasis */
-    pointer-events: none; /* Prevents the text from blocking mouse interactions */
-    transform: translateY(0); /* Initial position of the floating text (no movement yet) */
-    opacity: 1; /* Text starts fully visible */
-    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth animation for movement and fading */
-    z-index: 999; /* Ensures the text appears above most elements */
-}
-
-/* ======================= Rock Particle Animation ======================= */
-/* This styles the tiny rock particles that fly out after clicking */
-.rock-particle {
-    position: absolute; /* Positions the particles relative to their container */
-    width: 200px; /* Sets the size of each particle */
-    height: 200px; /* Ensures the particles are square-shaped */
-    pointer-events: none; /* Makes sure particles don't interfere with clicking */
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Smooth movement and fading animation */
-    z-index: 10; /* Makes the particles appear above the object but below the floating text */
-}
-
-/* ======================= Hide Default Cursor ======================= */
-/* This removes the standard mouse cursor, allowing a custom cursor to appear instead */
-body {
-    cursor: none; /* Hides the default browser cursor */
-}
-
-/* ======================= Custom Pickaxe Cursor ======================= */
-/* This styles the custom pickaxe cursor that follows the mouse */
-#customCursor {
-    position: fixed; /* Makes the cursor stay in the same place, even if the page scrolls */
-    width: 52px; /* Sets the pickaxe image width */
-    height: 52px; /* Sets the pickaxe image height */
-    pointer-events: none; /* Prevents the cursor from interfering with clicks */
-    z-index: 9999; /* Ensures the cursor appears above all other elements */
-    transform-origin: center center; /* Defines the rotation point for animations */
-    transition: transform 0.2s ease; /* Adds smooth transitions for cursor animations */
-}
-
-/* ======================= Pickaxe Shake Animation ======================= */
-/* This creates a shaking effect for the pickaxe cursor */
-.cursor-shake {
-    animation: pickaxe-swing 0.3s ease; /* Applies the shaking animation (defined below) */
-}
-
-/* Define the keyframes for the pickaxe swing animation */
-@keyframes pickaxe-swing {
-    0% { transform: rotate(0deg); } /* Start with no rotation */
-    25% { transform: rotate(-40deg); } /* Swing slightly left */
-    50% { transform: rotate(40deg); } /* Swing to the right */
-    75% { transform: rotate(-10deg); } /* Swing back left a little */
-    100% { transform: rotate(0deg); } /* End with no rotation */
 }
