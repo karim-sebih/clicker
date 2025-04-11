@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Clic sur le rocher
     clicker.addEventListener('click', function () {
         pts += cpc;
-        console.log(`Clic ! cpc = ${cpc}, pts = ${pts}`); // DEBUG
         updateDisplay();
         saveGame();
     });
@@ -55,13 +54,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     function buyUpgrade(upgrade) {
         if (pts >= upgrade.cost && !upgrade.owned) {
             pts -= upgrade.cost;
-            const cpcGain = Number(upgrade.cpc) || 0;
-            cpc += cpcGain;
+            cpc += upgrade.cpc || 0;
             upgrade.owned = true;
-            console.log(`Upgrade "${upgrade.name}" acheté ! +${cpcGain} cpc (total: ${cpc})`);
             updateDisplay();
             saveGame();
-            loadUpgrades();
+            loadUpgrades(); // Retirer l'upgrade achetée de l'affichage
         }
     }
 
@@ -172,28 +169,4 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Lancement du jeu
     loadUpgrades();
     loadBuildings();
-    let ressources = parseInt(localStorage.getItem('pts')) || 0;
-    console.log("Ressources au démarrage :", ressources);
-    
-    const resetBtn = document.getElementById('resetGameBtn');
-    const modal = document.getElementById('resetModal');
-    const confirmReset = document.getElementById('confirmReset');
-    const cancelReset = document.getElementById('cancelReset');
-    
-    // Affiche le modal
-    resetBtn.addEventListener('click', () => {
-      modal.style.display = 'block';
-    });
-    
-    // Annule la réinitialisation
-    cancelReset.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-    
-    // Confirme et réinitialise
-    confirmReset.addEventListener('click', () => {
-      localStorage.clear();
-      location.reload();
-    });
-    
 });

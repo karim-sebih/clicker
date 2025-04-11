@@ -36,7 +36,6 @@ body {
     border-right: 2px solid #8d6e63;
     position: relative;
     z-index: 1; /* z-index bas pour que le tooltip passe devant */
-    cursor: none;
 }
 
 #leftBeam {
@@ -317,3 +316,6 @@ body {
     100% { transform: rotate(0deg); } /* End with no rotation */
 }
 
+
+
+/µ

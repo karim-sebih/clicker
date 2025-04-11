@@ -175,25 +175,5 @@ document.addEventListener('DOMContentLoaded', async function () {
     let ressources = parseInt(localStorage.getItem('pts')) || 0;
     console.log("Ressources au démarrage :", ressources);
     
-    const resetBtn = document.getElementById('resetGameBtn');
-    const modal = document.getElementById('resetModal');
-    const confirmReset = document.getElementById('confirmReset');
-    const cancelReset = document.getElementById('cancelReset');
-    
-    // Affiche le modal
-    resetBtn.addEventListener('click', () => {
-      modal.style.display = 'block';
-    });
-    
-    // Annule la réinitialisation
-    cancelReset.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-    
-    // Confirme et réinitialise
-    confirmReset.addEventListener('click', () => {
-      localStorage.clear();
-      location.reload();
-    });
-    
+
 });
