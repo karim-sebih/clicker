@@ -61,7 +61,7 @@ cookie.addEventListener('click', (e) => {
 
 // Supprimer la ligne : const perClick = 1;
 
-
+// À la place, dans l'événement de clic :
 const currentCpc = parseFloat(localStorage.getItem('cpc')) || 1;
 resources += currentCpc;
 document.getElementById('cookieCounter').textContent = `${Math.floor(resources)} Ressources`;

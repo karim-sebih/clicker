@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Clic sur le rocher
     clicker.addEventListener('click', function () {
         pts += cpc;
-        console.log(`Clic ! cpc = ${cpc}, pts = ${pts}`); // DEBUG
         updateDisplay();
         saveGame();
     });
@@ -55,13 +54,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     function buyUpgrade(upgrade) {
         if (pts >= upgrade.cost && !upgrade.owned) {
             pts -= upgrade.cost;
-            const cpcGain = Number(upgrade.cpc) || 0;
-            cpc += cpcGain;
+            cpc += upgrade.cpc || 0;
             upgrade.owned = true;
-            console.log(`Upgrade "${upgrade.name}" acheté ! +${cpcGain} cpc (total: ${cpc})`);
             updateDisplay();
             saveGame();
-            loadUpgrades();
+            loadUpgrades(); // Retirer l'upgrade achetée de l'affichage
         }
     }
 

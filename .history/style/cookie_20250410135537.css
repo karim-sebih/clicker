@@ -288,6 +288,8 @@ body {
     z-index: 10; /* Makes the particles appear above the object but below the floating text */
 }
 
+/* ======================= Hide Default Cursor ======================= */
+/* This removes the standard mouse cursor, allowing a custom cursor to appear instead */
 
 /* ======================= Custom Pickaxe Cursor ======================= */
 /* This styles the custom pickaxe cursor that follows the mouse */

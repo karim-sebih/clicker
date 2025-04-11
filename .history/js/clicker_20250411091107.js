@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', async function() {
     // Éléments DOM
     const ptsCont = document.getElementById('cookieCounter');
     const cpsCont = document.getElementById('cookiePerSecond');
@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const upgradeContainer = document.getElementById('upgrade');
     const buildingsContainer = document.getElementById('buildingsMaster');
 
+    // Vérification des éléments DOM
     if (!ptsCont || !cpsCont || !clicker || !upgradeContainer || !buildingsContainer) {
         console.error('Un ou plusieurs éléments DOM sont manquants.');
         return;
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     let shopData = JSON.parse(localStorage.getItem('shopData')) || [];
     let upgradeData = JSON.parse(localStorage.getItem('upgradeData')) || [];
 
-    // Chargement JSON
+    // Charger les données initiales si absentes
     try {
         if (!Array.isArray(shopData) || shopData.length === 0) {
             shopData = await getShopData();
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         return;
     }
 
+    // Normalisation des données
     let buildings = Array.isArray(shopData) ? shopData : [];
     let upgrades = Array.isArray(upgradeData) ? upgradeData : [];
 
@@ -43,51 +45,26 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
     updateDisplay();
 
-    // Clic sur le rocher
-    clicker.addEventListener('click', function () {
-        pts += cpc;
-        console.log(`Clic ! cpc = ${cpc}, pts = ${pts}`); // DEBUG
-        updateDisplay();
-        saveGame();
-    });
-
-    // Achat d'une amélioration
-    function buyUpgrade(upgrade) {
-        if (pts >= upgrade.cost && !upgrade.owned) {
-            pts -= upgrade.cost;
-            const cpcGain = Number(upgrade.cpc) || 0;
-            cpc += cpcGain;
-            upgrade.owned = true;
-            console.log(`Upgrade "${upgrade.name}" acheté ! +${cpcGain} cpc (total: ${cpc})`);
-            updateDisplay();
-            saveGame();
-            loadUpgrades();
-        }
-    }
-
-    // Affichage des améliorations
+    // Charger les améliorations (sans `owned`)
     function loadUpgrades() {
         upgradeContainer.innerHTML = '';
         upgrades.forEach((upgrade, index) => {
-            if (upgrade.owned) return;
-
             const upgradeItem = document.createElement('div');
             upgradeItem.classList.add('upgrade-item');
             upgradeItem.id = `upgrade${index}`;
 
             const iconOrImage = upgrade.image && upgrade.image.src
-                ? `<img src="${upgrade.image.src}" alt="${upgrade.image.alt}" class="upgrade-image">`
-                : `<i class="fas fa-question"></i>`;
+                ? `<img src="${upgrade.image.src}" alt="${upgrade.image.alt}" class="upgrade-image">`: `<i class="fas fa-question"></i>`;
 
             upgradeItem.innerHTML = `
                 ${iconOrImage}
                 <div class="tooltip">
-                    <div class="building-icon">${iconOrImage}</div>  
-                    ${upgrade.name} - ${upgrade.cost} ressources <hr>
+                    <div class="building-icon">${iconOrImage}</div>  ${upgrade.name} - ${upgrade.cost} ressources <hr>
                     ${upgrade.description}
                 </div>
             `;
 
+            // Ajouter l'événement de clic
             upgradeItem.addEventListener('click', () => {
                 buyUpgrade(upgrade);
             });
@@ -96,25 +73,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Achat d'un bâtiment
-    function buyBuilding(building, index) {
-        if (pts >= building.cost) {
-            pts -= building.cost;
-            building.count = (building.count || 0) + 1;
-            building.cost = Math.ceil(building.cost * 1.15);
-            cps += building.cps || 0;
-
-            const priceCont = document.getElementById(`pricebuilding${index}`);
-            const ownedCont = document.getElementById(`ownedbuilding${index}`);
-            if (priceCont) priceCont.textContent = `${building.cost} ressources`;
-            if (ownedCont) ownedCont.textContent = building.count;
-
-            updateDisplay();
-            saveGame();
-        }
-    }
-
-    // Affichage des bâtiments
+    // Charger les bâtiments
     function loadBuildings() {
         buildingsContainer.innerHTML = '';
         buildings.forEach((building, index) => {
@@ -140,14 +99,53 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Tick automatique des ressources par seconde
+    // Initialisation
+    loadUpgrades();
+    loadBuildings();
+
+    // Clic sur le rocher
+    clicker.addEventListener('click', function() {
+        pts += cpc;
+        updateDisplay();
+        saveGame();
+    });
+
+    // Achat d'une amélioration (sans `owned`)
+    function buyUpgrade(upgrade) {
+        if (pts >= upgrade.cost) {
+            pts -= upgrade.cost;
+            cpc += upgrade.cpc || 0; // Augmente le clic par seconde
+            updateDisplay();
+            saveGame();
+        }
+    }
+
+    // Achat d'un bâtiment
+    function buyBuilding(building, index) {
+        if (pts >= building.cost) {
+            pts -= building.cost;
+            building.count = (building.count || 0) + 1;
+            building.cost = Math.ceil(building.cost * 1.15); // Augmentation du coût
+            cps += building.cps || 0;
+
+            const priceCont = document.getElementById(`pricebuilding${index}`);
+            const ownedCont = document.getElementById(`ownedbuilding${index}`);
+            if (priceCont) priceCont.textContent = `${building.cost} ressources`;
+            if (ownedCont) ownedCont.textContent = building.count;
+
+            updateDisplay();
+            saveGame();
+        }
+    }
+
+    // Ajout automatique des CPS
     setInterval(() => {
-        pts += cps / 100;
+        pts += cps / 100; // Mise à jour toutes les 10ms
         updateDisplay();
         saveGame();
     }, 10);
 
-    // Sauvegarde
+    // Sauvegarde dans localStorage
     function saveGame() {
         localStorage.setItem('pts', JSON.stringify(pts));
         localStorage.setItem('cps', JSON.stringify(cps));
@@ -156,7 +154,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         localStorage.setItem('upgradeData', JSON.stringify(upgrades));
     }
 
-    // Chargement JSON
+    // Chargement des données JSON
     async function getShopData() {
         const res = await fetch('./json/shop.json');
         if (!res.ok) throw new Error(`Erreur shop.json: ${res.status}`);
@@ -168,8 +166,4 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (!res.ok) throw new Error(`Erreur upgrade.json: ${res.status}`);
         return await res.json();
     }
-
-    // Lancement du jeu
-    loadUpgrades();
-    loadBuildings();
 });

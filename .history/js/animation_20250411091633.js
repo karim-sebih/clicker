@@ -3,6 +3,9 @@
 // This variable keeps track of the resources you’ve mined
 let resources = 0;
 
+resources += perClick;
+document.getElementById('cookieCounter').textContent = `${resources} Ressources`;
+spawnFloatingText(e.clientX, e.clientY, `+${perClick}`);
 
 
 // ======================= Cursor Logic ======================= //
@@ -59,14 +62,12 @@ cookie.addEventListener('click', (e) => {
     cookieImg.classList.add('shake-pickaxe'); // Add a shake effect to the rock image
     setTimeout(() => cookieImg.classList.remove('shake-pickaxe'), 300); // Remove it after 300 milliseconds
 
-// Supprimer la ligne : const perClick = 1;
+    // Increase the resources and update the counter on the screen
+    resources += perClick; // Add the "perClick" amount to your total resources
+    document.getElementById('cookieCounter').textContent = `${resources} Ressources`; // Update the resource display
 
-
-const currentCpc = parseFloat(localStorage.getItem('cpc')) || 1;
-resources += currentCpc;
-document.getElementById('cookieCounter').textContent = `${Math.floor(resources)} Ressources`;
-spawnFloatingText(e.clientX, e.clientY, `+${Math.floor(currentCpc)}`);
-
+    // Show a floating text (like "+1") near the mouse click position
+    spawnFloatingText(e.clientX, e.clientY, `+${perClick}`);
 
     // Create tiny particles (like rocks flying out) near the click
     spawnRockParticles(e);
