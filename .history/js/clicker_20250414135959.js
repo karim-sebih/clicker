@@ -5,9 +5,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     const clicker = document.getElementById('cookie');
     const upgradeContainer = document.getElementById('upgrade');
     const buildingsContainer = document.getElementById('buildingsMaster');
-    const cookieImg = document.querySelector('#cookie img');
 
-    if (!ptsCont || !cpsCont || !clicker || !upgradeContainer || !buildingsContainer || !cookieImg) {
+    if (!ptsCont || !cpsCont || !clicker || !upgradeContainer || !buildingsContainer) {
         console.error('Un ou plusieurs éléments DOM sont manquants.');
         return;
     }
@@ -18,18 +17,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     let cpc = parseFloat(localStorage.getItem('cpc')) || 1;
     let shopData = JSON.parse(localStorage.getItem('shopData')) || [];
     let upgradeData = JSON.parse(localStorage.getItem('upgradeData')) || [];
-    let buildings = Array.isArray(shopData) ? shopData : [];
-    let upgrades = Array.isArray(upgradeData) ? upgradeData : [];
-
-    // Appliquer image de ressource si une upgrade avec multiplier et image est owned
-    function applyLastOwnedImage() {
-        const ownedWithImage = upgrades.filter(up => up.owned && up.multiplier && up.image && up.image.src);
-        if (ownedWithImage.length > 0) {
-            const last = ownedWithImage[ownedWithImage.length - 1];
-            cookieImg.src = last.image.src;
-            cookieImg.alt = last.image.alt || 'Amélioration';
-        }
-    }
 
     // Chargement JSON
     try {
@@ -48,17 +35,18 @@ document.addEventListener('DOMContentLoaded', async function () {
         return;
     }
 
-    upgrades = upgradeData;
+    let buildings = Array.isArray(shopData) ? shopData : [];
+    let upgrades = Array.isArray(upgradeData) ? upgradeData : [];
 
     function updateDisplay() {
         ptsCont.textContent = `${Math.floor(pts)} Ressources`;
         cpsCont.textContent = `par seconde : ${Math.round(cps * 10) / 10}`;
     }
     updateDisplay();
-    applyLastOwnedImage();
 
     clicker.addEventListener('click', function () {
         pts += cpc;
+        console.log(`Clic ! cpc = ${cpc}, pts = ${pts}`);
         updateDisplay();
         saveGame();
     });
@@ -74,11 +62,18 @@ document.addEventListener('DOMContentLoaded', async function () {
                 cpc *= multiplier;
             }
 
+            if (upgrade.image && upgrade.image.src) {
+                const cookieImg = document.querySelector('#cookie img');
+                if (cookieImg) {
+                    cookieImg.src = upgrade.image.src;
+                    cookieImg.alt = upgrade.image.alt || 'Amélioration';
+                }
+            }
+
             upgrade.owned = true;
             updateDisplay();
             saveGame();
             loadUpgrades();
-            applyLastOwnedImage();
         }
     }
 

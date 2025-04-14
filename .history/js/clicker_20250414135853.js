@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     let buildings = Array.isArray(shopData) ? shopData : [];
     let upgrades = Array.isArray(upgradeData) ? upgradeData : [];
 
-    // Appliquer image de ressource si une upgrade avec multiplier et image est owned
+    // Appliquer image de ressource si une upgrade avec image est owned
     function applyLastOwnedImage() {
-        const ownedWithImage = upgrades.filter(up => up.owned && up.multiplier && up.image && up.image.src);
+        const ownedWithImage = upgrades.filter(up => up.owned && up.image && up.image.src);
         if (ownedWithImage.length > 0) {
             const last = ownedWithImage[ownedWithImage.length - 1];
             cookieImg.src = last.image.src;
@@ -151,11 +151,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    setInterval(() => {
-        pts += cps / 100;
-        updateDisplay();
-        saveGame();
-    }, 10);
 
     function saveGame() {
         localStorage.setItem('pts', JSON.stringify(pts));
