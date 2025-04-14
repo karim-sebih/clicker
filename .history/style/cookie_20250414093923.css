@@ -88,9 +88,9 @@ body {
 .minerRunner img {
     height: 20%;
     position: absolute;
-    top: 83%; /* Positions the GIF vertically on the screen */
+    top: 70%; /* Positions the GIF vertically on the screen */
     left: -20%; /* Starts slightly off the left edge */
-    z-index: 1;
+    z-index: 10;
     opacity: 1;
     transform: scaleX(1); /* Starts facing right */
     animation: run 10s linear infinite; /* Smooth loop for the running animation */
@@ -420,7 +420,12 @@ body {
     /* Makes the particles appear above the object but below the floating text */
 }
 
-
+/* ======================= Hide Default Cursor ======================= */
+/* This removes the standard mouse cursor, allowing a custom cursor to appear instead */
+body {
+    cursor: none;
+    /* Hides the default browser cursor */
+}
 
 /* ======================= Custom Pickaxe Cursor ======================= */
 /* This styles the custom pickaxe cursor that follows the mouse */

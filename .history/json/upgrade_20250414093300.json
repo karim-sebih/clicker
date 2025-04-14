@@ -2,7 +2,7 @@
     {
         "name": "Pioche renforcée",
         "cost": 50,
-        "cpc": 1000,
+        "cpc": 1,
         "image": {
             "src": "../assets/pixeaxe upgrade1.png",
             "alt": "pickaxe upgrades 1"

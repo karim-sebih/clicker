@@ -25,9 +25,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             localStorage.setItem('shopData', JSON.stringify(shopData));
         }
         if (!Array.isArray(upgradeData) || upgradeData.length === 0) {
-            const classicUpgrades = await getUpgradeData();
-            const ressourceUpgrades = await getRessourceData();
-            upgradeData = [...classicUpgrades, ...ressourceUpgrades];
+            upgradeData = await getUpgradeData();
             localStorage.setItem('upgradeData', JSON.stringify(upgradeData));
         }
     } catch (error) {
@@ -38,45 +36,36 @@ document.addEventListener('DOMContentLoaded', async function () {
     let buildings = Array.isArray(shopData) ? shopData : [];
     let upgrades = Array.isArray(upgradeData) ? upgradeData : [];
 
+    // Mise à jour de l'affichage
     function updateDisplay() {
         ptsCont.textContent = `${Math.floor(pts)} Ressources`;
         cpsCont.textContent = `par seconde : ${Math.round(cps * 10) / 10}`;
     }
     updateDisplay();
 
+    // Clic sur le rocher
     clicker.addEventListener('click', function () {
         pts += cpc;
-        console.log(`Clic ! cpc = ${cpc}, pts = ${pts}`);
+        console.log(`Clic ! cpc = ${cpc}, pts = ${pts}`); // DEBUG
         updateDisplay();
         saveGame();
     });
 
+    // Achat d'une amélioration
     function buyUpgrade(upgrade) {
         if (pts >= upgrade.cost && !upgrade.owned) {
             pts -= upgrade.cost;
             const cpcGain = Number(upgrade.cpc) || 0;
-            const multiplier = Number(upgrade.multiplier) || 1;
-
             cpc += cpcGain;
-            if (multiplier > 1) {
-                cpc *= multiplier;
-            }
-
-            if (upgrade.image && upgrade.image.src) {
-                const cookieImg = document.querySelector('#cookie img');
-                if (cookieImg) {
-                    cookieImg.src = upgrade.image.src;
-                    cookieImg.alt = upgrade.image.alt || 'Amélioration';
-                }
-            }
-
             upgrade.owned = true;
+            console.log(`Upgrade "${upgrade.name}" acheté ! +${cpcGain} cpc (total: ${cpc})`);
             updateDisplay();
             saveGame();
             loadUpgrades();
         }
     }
 
+    // Affichage des améliorations
     function loadUpgrades() {
         upgradeContainer.innerHTML = '';
         upgrades.forEach((upgrade, index) => {
@@ -99,11 +88,15 @@ document.addEventListener('DOMContentLoaded', async function () {
                 </div>
             `;
 
-            upgradeItem.addEventListener('click', () => buyUpgrade(upgrade));
+            upgradeItem.addEventListener('click', () => {
+                buyUpgrade(upgrade);
+            });
+
             upgradeContainer.appendChild(upgradeItem);
         });
     }
 
+    // Achat d'un bâtiment
     function buyBuilding(building, index) {
         if (pts >= building.cost) {
             pts -= building.cost;
@@ -121,6 +114,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
+    // Affichage des bâtiments
     function loadBuildings() {
         buildingsContainer.innerHTML = '';
         buildings.forEach((building, index) => {
@@ -146,12 +140,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
+    // Tick automatique des ressources par seconde
     setInterval(() => {
         pts += cps / 100;
         updateDisplay();
         saveGame();
     }, 10);
 
+    // Sauvegarde
     function saveGame() {
         localStorage.setItem('pts', JSON.stringify(pts));
         localStorage.setItem('cps', JSON.stringify(cps));
@@ -160,6 +156,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         localStorage.setItem('upgradeData', JSON.stringify(upgrades));
     }
 
+    // Chargement JSON
     async function getShopData() {
         const res = await fetch('./json/shop.json');
         if (!res.ok) throw new Error(`Erreur shop.json: ${res.status}`);
@@ -172,12 +169,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         return await res.json();
     }
 
-    async function getRessourceData() {
-        const res = await fetch('./json/ressources.json');
-        if (!res.ok) throw new Error(`Erreur ressources.json: ${res.status}`);
-        return await res.json();
-    }
 
+    
+    // Lancement du jeu
     loadUpgrades();
     loadBuildings();
+   
+    
 });

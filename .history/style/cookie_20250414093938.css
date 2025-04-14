@@ -420,7 +420,12 @@ body {
     /* Makes the particles appear above the object but below the floating text */
 }
 
-
+/* ======================= Hide Default Cursor ======================= */
+/* This removes the standard mouse cursor, allowing a custom cursor to appear instead */
+body {
+    cursor: none;
+    /* Hides the default browser cursor */
+}
 
 /* ======================= Custom Pickaxe Cursor ======================= */
 /* This styles the custom pickaxe cursor that follows the mouse */

@@ -146,12 +146,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    setInterval(() => {
-        pts += cps / 100;
-        updateDisplay();
-        saveGame();
-    }, 10);
-
+    
     function saveGame() {
         localStorage.setItem('pts', JSON.stringify(pts));
         localStorage.setItem('cps', JSON.stringify(cps));

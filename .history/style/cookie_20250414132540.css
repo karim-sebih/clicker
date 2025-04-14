@@ -93,7 +93,7 @@ body {
     z-index: 1;
     opacity: 1;
     transform: scaleX(1); /* Starts facing right */
-    animation: run 10s linear infinite; /* Smooth loop for the running animation */
+    animation: run )<!s linear infinite; /* Smooth loop for the running animation */
 
     
 }
