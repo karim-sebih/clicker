@@ -4,6 +4,8 @@
         "name": "Pioche renforcée",
         "cost": 50,
         "effect": 1,
+        "type": "click",
+        "purchased": false,
         "image": {
             "src": "../assets/pixeaxe upgrade1.png",
             "alt": "pickaxe upgrades 1"
@@ -12,7 +14,9 @@
       {
         "name": "Lampe de mineur",
         "cost": 200,
-        "effect": 1,
+          "effect": 1,
+          "type": "passive",
+          "purchased": false,
         "image": {
             "src": "../assets/helmet.png",
             "alt": "pickaxe upgrades 1"

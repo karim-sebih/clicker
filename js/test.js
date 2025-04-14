@@ -72,17 +72,44 @@ window.onload = loadGameData;
 
 
 
+
+
+
+
+// ======================= Upgrade Logic ======================= //
+// This function handles the purchase of upgrades
 // ======================= Purchase Upgrade ======================= //
 // This function allows the player to buy an upgrade to increase passive resource generation
+// function purchaseUpgrade(upgrade) {
+//     if (resources >= upgrade.cost) { // Check if the player has enough resources
+//         resources -= upgrade.cost; // Deduct the cost of the upgrade from the player's resources
+//         cookiesPerSecond += upgrade.effect;  // Add the upgrade’s effect to the passive resource generation
+//         updateResourceCounts(); // Update the displayed resource counts
+//         document.getElementById(upgrade.name).style.display = 'none'; // Hide the upgrade after purchasing
+//     }
+// }
+
+
+let loadedUpgrades = [];
+
+
 function purchaseUpgrade(upgrade) {
-    if (resources >= upgrade.cost) { // Check if the player has enough resources
-        resources -= upgrade.cost; // Deduct the cost of the upgrade from the player's resources
-        cookiesPerSecond += upgrade.effect;  // Add the upgrade’s effect to the passive resource generation
-        updateResourceCounts(); // Update the displayed resource counts
-        document.getElementById(upgrade.name).style.display = 'none'; // Hide the upgrade after purchasing
+    if (resources >= upgrade.cost) {
+        resources -= upgrade.cost;
+
+        if (upgrade.type === 'click') {
+            perClick += upgrade.effect;
+        } else if (upgrade.type === 'passive') {
+            cookiesPerSecond += upgrade.effect;
+        }
+
+        updateResourceCounts();
+        document.getElementById(upgrade.name).style.display = 'none';
     }
 }
 
+// ======================= Upgrade Logic ======================= //
+// This function handles the purchase of upgrades
 // ======================= Purchase Building ======================= //
 // This function allows the player to buy buildings that increase passive resource generation
 function purchaseBuilding(building) {
@@ -104,11 +131,11 @@ function updateResourceCounts() {
     document.getElementById('cookiePerSecond').textContent = `${cookiesPerSecond} Ressources/s`; // Update the displayed resources per second
 }
 
-// ======================= Passive Resource Generation ======================= //
-// Automatically adds resources every 100 milliseconds (0.1 seconds)
-setInterval(() => {
-    updateResourceCounts(); // Call the function to update resources
-}, 100); // Interval set to 100 milliseconds
+// // ======================= Passive Resource Generation ======================= //
+// // Automatically adds resources every 100 milliseconds (0.1 seconds)
+// setInterval(() => {
+//     updateResourceCounts(); // Call the function to update resources
+// }, 100); // Interval set to 100 milliseconds
 
 
 // ================================================ Game Logic ================================================= //
@@ -117,7 +144,8 @@ setInterval(() => {
 let resources = 0;
 
 // Each click gives you 1 resource (you can change this to a higher number if you want to earn more per click)
-const perClick = 1;
+const perClick =1; // Amount of resources gained per click (can be changed to any number)
+// This variable keeps track of the number of resources you have (starts at 0)
 
 // ======================= Cursor Logic ======================= //
 // Create a custom pickaxe image to replace the regular cursor

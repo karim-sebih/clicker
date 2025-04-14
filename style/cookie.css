@@ -10,7 +10,7 @@ body {
     color: white;
     display: flex;
     height: 100vh;
-    overflow: visible;
+    overflow: hidden;
 }
 
 @font-face {
@@ -27,7 +27,7 @@ body {
 
 /* Section gauche (cookie principal) */
 #sectionLeft {
-    flex: 0 0 70%;      
+    flex: 0 0 70%;
     background-image: url(../assets/fond.jpg);
     padding: 10px;
     display: flex;
@@ -50,14 +50,127 @@ body {
 }
 
 #cookieCounter {
-    font-size: 2em;
+    font-size: 2.2em;
     margin-bottom: 10px;
+    filter: drop-shadow(0 0 0.3rem rgb(0, 0, 0));
 }
 
 #cookiePerSecond {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-bottom: 20px;
+    filter: drop-shadow(0 0 0.3rem rgb(0, 0, 0));
 }
+
+.miner img {
+    height: 25%;
+    position: absolute;
+    top: 55%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 1;
+    filter: brightness(0.5) drop-shadow(-5px 2px 10px #000000);
+
+}
+.miner2 img {
+    height: 30%;
+    position: absolute;
+    top: 43%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 1;
+    transform: scaleX(-1); /* Starts facing right */
+    filter: drop-shadow(-25px 2px 10px #000000);
+}
+
+
+.minerRunner img {
+    height: 20%;
+    position: absolute;
+    top: 67%; /* Positions the GIF vertically on the screen */
+    left: -20%; /* Starts slightly off the left edge */
+    z-index: 1;
+    opacity: 1;
+    transform: scaleX(1); /* Starts facing right */
+    animation: run 10s linear infinite; /* Smooth loop for the running animation */
+    filter: drop-shadow(45px 120px 30px #000000);
+    
+}
+
+@keyframes run {
+    0% {
+        transform: translateX(-20%) scaleX(1); /* Starts off-screen on the left, facing right */
+    }
+    50% {
+        transform: translateX(100vw) scaleX(1); /* Reaches the far right, still facing right */
+    }
+    51% {
+        transform: translateX(100vw) scaleX(-1); /* Immediately flips when starting right-to-left motion */
+    }
+    100% {
+        transform: translateX(-20%) scaleX(-1); /* Ends off-screen on the left, still facing left */
+    }
+}
+
+
+.bat img {
+    height: 10%; /* Sets the height of the image to 10% of the parent element */
+    position: absolute; /* Positions the image absolutely within the nearest positioned ancestor */
+    /* top: 15%;
+    right: 17%; */ /* These are commented out positioning rules, could be useful for specific placement */
+    transform: translate(-50%, -50%); /* Moves the image 50% of its width and height backwards */
+    z-index: 1; /* Sets the stacking order of the image */
+    opacity: none; /* 'none' is an invalid value for opacity, consider using values between 0 and 1 */
+    /* Adjust animation duration to change the element’s speed */ /* Informative comment about the animation */
+    animation: fly 45s linear infinite; /* Applies the 'fly' animation for 50 seconds in a loop */
+    pointer-events: none !important; /* Makes the image non-interactable by the user's pointer */
+    top: 0; /* Positions the image at the top of the container */
+    left: 0; /* Positions the image to the leftmost side of the container */
+    transform: scaleX(1); /* Starts facing right */
+    transform: translateX(-120%) translateY(-120%) rotateZ(0); /* Moves the image diagonally outside the viewport and rotates it by 0 degrees */
+    position: fixed; /* Fixes the image's position relative to the viewport */
+    animation-delay: 1s; /* Starts the animation after a 1-second delay */
+    z-index: 999999; /* Sets a very high stacking order for the image */
+}
+
+@keyframes fly {
+    98.001%, 0% {
+        display: block; /* Ensures the element remains visible throughout the animation */
+        transform: translateX(-200%) translateY(100vh) scaleX(-1); 
+        /* Starts off-screen to the left, near the bottom of the viewport, flipped horizontally to face left */
+    }
+    15% {
+        transform: translateX(100vw) translateY(-100%) scaleX(-1); 
+        /* Moves diagonally upward to the top right off-screen, still facing left */
+    }
+    15.001%, 18% {
+        transform: translateX(100vw) translateY(-30%) scaleX(1); 
+        /* Moves slightly downward on the right side of the screen, flips to face right */
+    }
+    40% {
+        transform: translateX(-200%) translateY(53vh) scaleX(1); 
+        /* Moves diagonally off-screen to the left at mid-viewport height, still facing right */
+    }
+    40.001%, 43% {
+        transform: translateX(-200%) translateY(150%) scaleX(-1); 
+        /* Moves further upward off-screen to the left and flips back to face left */
+    }
+    65% {
+        transform: translateX(100vw) translateY(50vh) scaleX(-1); 
+        /* Moves diagonally downward to the middle-right of the screen, still facing left */
+    }
+    65.001%, 68% {
+        transform: translateX(0vw) translateY(-150%) scaleX(-1); 
+        /* Moves far upward off-screen from the middle of the screen, still facing left */
+    }
+    95% {
+        transform: translateX(80vw) translateY(100vh) scaleX(-1); 
+        /* Moves diagonally downward to the lower right of the screen, still facing left */
+    }
+}
+
+
 
 #cookie {
     width: 200px;
@@ -66,7 +179,8 @@ body {
     justify-content: center;
     align-items: center;
     transition: transform 0.1s;
-    margin-top: 50px;
+    margin-top: 170px;
+        filter: drop-shadow(1px -22px 35px #000000);
 }
 
 #cookie img {
@@ -268,59 +382,102 @@ body {
 /* ======================= Floating Text Animation ======================= */
 /* This styles the floating text that appears after clicking, 
    making it rise up and fade out */
-   .floating-text {
-    position: fixed; /* Keeps the text in the same place regardless of scrolling */
-    color: #d4a017; /* Sets the text color (gold-like shade) */
-    font-size: 1.9em; /* Makes the text larger */
-    font-weight: bold; /* Makes the text thicker for emphasis */
-    pointer-events: none; /* Prevents the text from blocking mouse interactions */
-    transform: translateY(0); /* Initial position of the floating text (no movement yet) */
-    opacity: 1; /* Text starts fully visible */
-    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth animation for movement and fading */
-    z-index: 999; /* Ensures the text appears above most elements */
+.floating-text {
+    position: fixed;
+    /* Keeps the text in the same place regardless of scrolling */
+    color: #d4a017;
+    /* Sets the text color (gold-like shade) */
+    font-size: 1.9em;
+    /* Makes the text larger */
+    font-weight: bold;
+    /* Makes the text thicker for emphasis */
+    pointer-events: none;
+    /* Prevents the text from blocking mouse interactions */
+    transform: translateY(0);
+    /* Initial position of the floating text (no movement yet) */
+    opacity: 1;
+    /* Text starts fully visible */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    /* Smooth animation for movement and fading */
+    z-index: 999;
+    /* Ensures the text appears above most elements */
 }
 
 /* ======================= Rock Particle Animation ======================= */
 /* This styles the tiny rock particles that fly out after clicking */
 .rock-particle {
-    position: absolute; /* Positions the particles relative to their container */
-    width: 200px; /* Sets the size of each particle */
-    height: 200px; /* Ensures the particles are square-shaped */
-    pointer-events: none; /* Makes sure particles don't interfere with clicking */
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Smooth movement and fading animation */
-    z-index: 10; /* Makes the particles appear above the object but below the floating text */
+    position: absolute;
+    /* Positions the particles relative to their container */
+    width: 200px;
+    /* Sets the size of each particle */
+    height: 200px;
+    /* Ensures the particles are square-shaped */
+    pointer-events: none;
+    /* Makes sure particles don't interfere with clicking */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    /* Smooth movement and fading animation */
+    z-index: 10;
+    /* Makes the particles appear above the object but below the floating text */
 }
 
 /* ======================= Hide Default Cursor ======================= */
 /* This removes the standard mouse cursor, allowing a custom cursor to appear instead */
 body {
-    cursor: none; /* Hides the default browser cursor */
+    cursor: none;
+    /* Hides the default browser cursor */
 }
 
 /* ======================= Custom Pickaxe Cursor ======================= */
 /* This styles the custom pickaxe cursor that follows the mouse */
 #customCursor {
-    position: fixed; /* Makes the cursor stay in the same place, even if the page scrolls */
-    width: 52px; /* Sets the pickaxe image width */
-    height: 52px; /* Sets the pickaxe image height */
-    pointer-events: none; /* Prevents the cursor from interfering with clicks */
-    z-index: 9999; /* Ensures the cursor appears above all other elements */
-    transform-origin: center center; /* Defines the rotation point for animations */
-    transition: transform 0.2s ease; /* Adds smooth transitions for cursor animations */
+    position: fixed;
+    /* Makes the cursor stay in the same place, even if the page scrolls */
+    width: 52px;
+    /* Sets the pickaxe image width */
+    height: 52px;
+    /* Sets the pickaxe image height */
+    pointer-events: none;
+    /* Prevents the cursor from interfering with clicks */
+    z-index: 9999;
+    /* Ensures the cursor appears above all other elements */
+    transform-origin: center center;
+    /* Defines the rotation point for animations */
+    transition: transform 0.2s ease;
+    /* Adds smooth transitions for cursor animations */
 }
 
 /* ======================= Pickaxe Shake Animation ======================= */
 /* This creates a shaking effect for the pickaxe cursor */
 .cursor-shake {
-    animation: pickaxe-swing 0.3s ease; /* Applies the shaking animation (defined below) */
+    animation: pickaxe-swing 0.3s ease;
+    /* Applies the shaking animation (defined below) */
 }
 
 /* Define the keyframes for the pickaxe swing animation */
 @keyframes pickaxe-swing {
-    0% { transform: rotate(0deg); } /* Start with no rotation */
-    25% { transform: rotate(-40deg); } /* Swing slightly left */
-    50% { transform: rotate(40deg); } /* Swing to the right */
-    75% { transform: rotate(-10deg); } /* Swing back left a little */
-    100% { transform: rotate(0deg); } /* End with no rotation */
-}
+    0% {
+        transform: rotate(0deg);
+    }
 
+    /* Start with no rotation */
+    25% {
+        transform: rotate(-40deg);
+    }
+
+    /* Swing slightly left */
+    50% {
+        transform: rotate(40deg);
+    }
+
+    /* Swing to the right */
+    75% {
+        transform: rotate(-10deg);
+    }
+
+    /* Swing back left a little */
+    100% {
+        transform: rotate(0deg);
+    }
+
+    /* End with no rotation */
+}
