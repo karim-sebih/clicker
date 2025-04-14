@@ -22,10 +22,10 @@
     [
         {
             "name": "Transformation en Charbon",
-            "cost": 20000,
+            "cost": 500,
             "multiplier": 1.5,
             "image": {
-                "src": "../assets/charbonpixelart.png",
+                "src": "../assets/charcoal.png",
                 "alt": "charcoal"
             },
             "description": "Le rocher devient du charbon. cpc x1.5"
@@ -35,7 +35,7 @@
             "cost": 40000,
             "multiplier": 2,
             "image": {
-                "src": "../assets/silverpixelart.png",
+                "src": "../assets/iron.png",
                 "alt": "iron"
             },
             "description": "Le rocher devient du fer. cpc x2"
@@ -45,7 +45,7 @@
             "cost": 80000,
             "multiplier": 3,
             "image": {
-                "src": "../assets/Goldpixelart.png",
+                "src": "../assets/gold.png",
                 "alt": "gold"
             },
             "description": "Le rocher devient de l'or. cpc x3"
@@ -55,7 +55,7 @@
             "cost": 120000,
             "multiplier": 5,
             "image": {
-                "src": "../assets/diamondpixelart.png",
+                "src": "../assets/diamond.png",
                 "alt": "diamond"
             },
             "description": "Le rocher devient un diamant. cpc x5"

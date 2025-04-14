@@ -45,7 +45,7 @@
             "cost": 80000,
             "multiplier": 3,
             "image": {
-                "src": "../assets/Goldpixelart.png",
+                "src": "../assets/gol",
                 "alt": "gold"
             },
             "description": "Le rocher devient de l'or. cpc x3"
@@ -55,7 +55,7 @@
             "cost": 120000,
             "multiplier": 5,
             "image": {
-                "src": "../assets/diamondpixelart.png",
+                "src": "../assets/diamond.png",
                 "alt": "diamond"
             },
             "description": "Le rocher devient un diamant. cpc x5"

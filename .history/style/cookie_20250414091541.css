@@ -64,7 +64,7 @@ body {
 .miner img {
     height: 25%;
     position: absolute;
-    top: 70%;
+    top: 55%;
     left: 15%;
     transform: translate(-50%, -50%);
     z-index: 1;
@@ -75,7 +75,7 @@ body {
 .miner2 img {
     height: 30%;
     position: absolute;
-    top: 53%;
+    top: 43%;
     left: 70%;
     transform: translate(-50%, -50%);
     z-index: 1;
@@ -88,13 +88,13 @@ body {
 .minerRunner img {
     height: 20%;
     position: absolute;
-    top: 70%; /* Positions the GIF vertically on the screen */
+    top: 7%; /* Positions the GIF vertically on the screen */
     left: -20%; /* Starts slightly off the left edge */
     z-index: 1;
     opacity: 1;
     transform: scaleX(1); /* Starts facing right */
     animation: run 10s linear infinite; /* Smooth loop for the running animation */
-
+    filter: drop-shadow(45px 120px 30px #000000);
     
 }
 

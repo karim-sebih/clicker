@@ -202,7 +202,6 @@ function buyUpgrade(upgrade) {
 }
 
 
-
     // Lancement du jeu
     loadUpgrades();
     loadBuildings();

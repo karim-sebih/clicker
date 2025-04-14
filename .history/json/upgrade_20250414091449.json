@@ -55,7 +55,7 @@
             "cost": 120000,
             "multiplier": 5,
             "image": {
-                "src": "../assets/diamondpixelart.png",
+                "src": "../assets/Goldpixelart.pn",
                 "alt": "diamond"
             },
             "description": "Le rocher devient un diamant. cpc x5"

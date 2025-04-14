@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Pioche renforcée",
+        "cost": 50,
+        "cpc": 1,
+        "image": {
+            "src": "../assets/pixeaxe upgrade1.png",
+            "alt": "pickaxe upgrades 1"
+        },
+        "description": "Augmente le nbe pts/click de 1"
+    },
+    {
+        "name": "Lampe de mineur",
+        "cost": 200,
+        "cpc": 5,
+        "image": {
+            "src": "../assets/helmet.png",
+            "alt": "miner helmet"
+        },
+        "description": "Augmente le nbe pts/click de 5"
+    },
+    {
+    "name": "Transformation en Charbon",
+    "cost": 10000,
+    "multiplier": 1.75,
+    "image": {
+        "src": "../assets/charcoal.png",
+        "alt": "charcoal"
+    },
+    "description": "Transforme la pierre en charbon et multiplie les points/clic par 1.75"
+}
+
+]

@@ -169,38 +169,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         return await res.json();
     }
 
-/*multiplier ressources */
-function buyUpgrade(upgrade) {
-    if (pts >= upgrade.cost && !upgrade.owned) {
-        pts -= upgrade.cost;
-
-        const cpcGain = Number(upgrade.cpc) || 0;
-        const multiplier = Number(upgrade.multiplier) || 1;
-
-        // Appliquer cpc gain
-        cpc += cpcGain;
-
-        // Appliquer multiplicateur s'il existe
-        if (multiplier > 1) {
-            cpc *= multiplier;
-        }
-
-        // Changer l'image si spécifiée
-        if (upgrade.image && upgrade.image.src) {
-            const cookieImg = document.querySelector('#cookie img');
-            if (cookieImg) {
-                cookieImg.src = upgrade.image.src;
-                cookieImg.alt = upgrade.image.alt || 'Amélioration';
-            }
-        }
-
-        upgrade.owned = true;
-        updateDisplay();
-        saveGame();
-        loadUpgrades();
-    }
-}
-
+/* */
 
 
     // Lancement du jeu
