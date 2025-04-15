@@ -1,0 +1,36 @@
+{
+    "upgrades": [
+      {
+        "name": "Pioche renforcée",
+        "cost": 50,
+        "icon": "fa-solid fa-pickaxe"
+      },
+      {
+        "name": "Lampe de mineur",
+        "cost": 200,
+        "icon": "fa-solid fa-lightbulb"
+      }
+    ],
+    "buildings": [
+      {
+        "name": "Pioche",
+        "cost": 15
+      },
+      {
+        "name": "Mineur apprenti",
+        "cost": 100
+      },
+      {
+        "name": "Dynamite",
+        "cost": 1000
+      },
+      {
+        "name": "Foreuse mécanique",
+        "cost": 10000
+      },
+      {
+        "name": "Excavatrice géante",
+        "cost": 100000
+      }
+    ]
+  }

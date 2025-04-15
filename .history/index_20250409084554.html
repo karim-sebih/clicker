@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Démo JSON → Divs</title>
+  <style>
+    .crate {
+      width: 64px;
+      height: 64px;
+      background-image: url('https://orteil.dashnet.org/cookieclicker/img/icons.png');
+      display: inline-block;
+      margin: 10px;
+      border: 2px solid #ccc;
+      cursor: pointer;
+    }
+    .enabled {
+      border-color: limegreen;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Upgrades générés depuis un JSON</h1>
+  <div id="upgrade-container"></div>
+
+  <script>
+    // Simulation d'un JSON
+    const upgrades = [
+      {
+        id: 67,
+        name: "Super Upgrade",
+        backgroundPosition: "-96px -432px",
+        iconId: "upgrade11"
+      },
+      {
+        id: 42,
+        name: "Mega Clicker",
+        backgroundPosition: "-160px -368px",
+        iconId: "upgrade42"
+      }
+    ];
+
+    // Simulation d'objet global comme dans Cookie Clicker
+    const Game = {
+      UpgradesById: {
+        67: { click: () => alert("Super Upgrade activé!") },
+        42: { click: () => alert("Mega Clicker activé!") }
+      },
+      mouseDown: false,
+      setOnCrate: (el) => console.log("Hover sur", el),
+      tooltip: {
+        dynamic: false,
+        draw: (el, fn) => console.log("Tooltip:", fn()),
+        wobble: () => console.log("Wobble tooltip!"),
+        shouldHide: false
+      },
+      crateTooltip: (upgrade, type) => `${upgrade.click.name} (type: ${type})`
+    };
+
+    // Création dynamique des divs depuis le JSON
+    const container = document.getElementById('upgrade-container');
+
+    upgrades.forEach(upgrade => {
+      const div = document.createElement("div");
+      div.className = "crate upgrade enabled";
+      div.dataset.id = upgrade.id;
+      div.id = upgrade.iconId;
+      div.style.backgroundPosition = upgrade.backgroundPosition;
+
+      div.onclick = function(event) {
+        Game.UpgradesById[upgrade.id].click(event);
+      };
+
+      div.onmouseover = function() {
+        if (!Game.mouseDown) {
+          Game.setOnCrate(this);
+          Game.tooltip.dynamic = true;
+          Game.tooltip.draw(this, function () {
+            return function () {
+              return Game.crateTooltip(Game.UpgradesById[upgrade.id], 'store');
+            }();
+          }, 'store');
+          Game.tooltip.wobble();
+        }
+      };
+
+      div.onmouseout = function () {
+        Game.setOnCrate(0);
+        Game.tooltip.shouldHide = true;
+      };
+
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
