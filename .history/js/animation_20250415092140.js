@@ -102,7 +102,7 @@ function spawnRockParticles(e) {
     // Create the particles in a loop (1 particle in this case)
     for (let i = 0; i < count; i++) {
         const particle = document.createElement('img'); // Create an image element for each particle
-        particle.src = '../assets/tiny-rock.png'; // Set the image for the particle
+        particle.src = '../assets'; // Set the image for the particle
         particle.classList.add('rock-particle'); // Add a CSS class for the particle's style and animation
         
         // Pick a random direction and distance for the particle to "fly"
