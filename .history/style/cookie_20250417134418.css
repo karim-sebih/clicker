@@ -202,19 +202,10 @@ body {
     padding: 20px;
     overflow: visible;
     border-left: 2px solid #8d6e63;
-    position: relative;
+    o
     z-index: 1;
     
 }
-
-#rightBeam {
-    width: 100%;
-    overflow-y: scroll;
-    height: 2px;
-    background-color: #8d6e63;
-    margin-bottom: 20px;
-}
-
 /* Section upgrade */
 #upgradeTitle {
     font-size: 1.5em;

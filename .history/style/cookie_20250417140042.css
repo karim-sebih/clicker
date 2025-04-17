@@ -33,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    o
     border-right: 2px solid #8d6e63;
     /* cursor: url('../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png') 16 16, auto; */
     cursor: none;
@@ -203,13 +204,12 @@ body {
     overflow: visible;
     border-left: 2px solid #8d6e63;
     position: relative;
-    z-index: 1;
-    
+    z-index: 2;
+    overflow-y: auto;
 }
 
 #rightBeam {
     width: 100%;
-    overflow-y: scroll;
     height: 2px;
     background-color: #8d6e63;
     margin-bottom: 20px;
@@ -279,7 +279,6 @@ body {
 .upgrade-item:hover .tooltip {
     visibility: visible;
     opacity: 1;
-    
 }
 
 

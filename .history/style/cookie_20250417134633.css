@@ -38,6 +38,7 @@ body {
     cursor: none;
     position: relative;
     z-index: 1;
+    overflow: scroll;
     /* z-index bas pour que le tooltip passe devant */
 }
 
@@ -202,18 +203,12 @@ body {
     padding: 20px;
     overflow: visible;
     border-left: 2px solid #8d6e63;
-    position: relative;
-    z-index: 1;
+  overflow-y: scroll;
+    z-index: 2;
     
 }
 
-#rightBeam {
-    width: 100%;
-    overflow-y: scroll;
-    height: 2px;
-    background-color: #8d6e63;
-    margin-bottom: 20px;
-}
+
 
 /* Section upgrade */
 #upgradeTitle {

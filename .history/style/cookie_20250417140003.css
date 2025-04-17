@@ -10,7 +10,8 @@ body {
     color: white;
     display: flex;
     height: 100vh;
-    overflow: hidden;
+
+
 }
 
 @font-face {
@@ -36,7 +37,7 @@ body {
     border-right: 2px solid #8d6e63;
     /* cursor: url('../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png') 16 16, auto; */
     cursor: none;
-    position: relative;
+    position: fixed;
     z-index: 1;
     /* z-index bas pour que le tooltip passe devant */
 }
@@ -203,13 +204,11 @@ body {
     overflow: visible;
     border-left: 2px solid #8d6e63;
     position: relative;
-    z-index: 1;
-    
+    z-index: 2;
 }
 
 #rightBeam {
     width: 100%;
-    overflow-y: scroll;
     height: 2px;
     background-color: #8d6e63;
     margin-bottom: 20px;
@@ -265,7 +264,7 @@ body {
     padding: 5px 10px;
     border-radius: 5px;
     position: absolute;
-    z-index: 9999;
+    z-index: 99999;
     right: 110%;
     top: 50%;
     transform: translateY(-50%);
