@@ -1,0 +1,476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Minecraft";
+    background-color: #f0e4d7;
+    color: white;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: "Minecraft";
+    src: url("../font/Minecraft.ttf") format('truetype');
+}
+
+/* Conteneur principal */
+#gameWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Section gauche (cookie principal) */
+#sectionLeft {
+    flex: 0 0 70%;
+    background-image: url(../assets/fond.jpg);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #8d6e63;
+    /* cursor: url('../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png') 16 16, auto; */
+    cursor: none;
+    position: relative;
+    z-index: 1;
+    /* z-index bas pour que le tooltip passe devant */
+}
+
+#leftBeam {
+    width: 100%;
+    height: 2px;
+    background-color: #8d6e63;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+#cookieCounter {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 0.3rem rgb(0, 0, 0));
+}
+
+#cookiePerSecond {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 0.3rem rgb(0, 0, 0));
+}
+
+.miner img {
+    height: 25%;
+    position: absolute;
+    top: 70%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 1;
+    filter: brightness(0.5) drop-shadow(-5px 2px 10px #000000);
+
+}
+.miner2 img {
+    height: 30%;
+    position: absolute;
+    top: 53%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 1;
+    transform: scaleX(-1); /* Starts facing right */
+    filter: drop-shadow(-25px 2px 10px #000000);
+}
+
+
+.minerRunner img {
+    height: 20%;
+    position: absolute;
+    top: 83%; /* Positions the GIF vertically on the screen */
+    left: -20%; /* Starts slightly off the left edge */
+    z-index: 1;
+    opacity: 1;
+    transform: scaleX(1); /* Starts facing right */
+    animation: run 10s linear infinite; /* Smooth loop for the running animation */
+
+    
+}
+
+@keyframes run {
+    0% {
+        transform: translateX(-20%) scaleX(1); /* Starts off-screen on the left, facing right */
+    }
+    50% {
+        transform: translateX(100vw) scaleX(1); /* Reaches the far right, still facing right */
+    }
+    51% {
+        transform: translateX(100vw) scaleX(-1); /* Immediately flips when starting right-to-left motion */
+    }
+    100% {
+        transform: translateX(-20%) scaleX(-1); /* Ends off-screen on the left, still facing left */
+    }
+}
+
+
+.bat img {
+    height: 10%; /* Sets the height of the image to 10% of the parent element */
+    position: absolute; /* Positions the image absolutely within the nearest positioned ancestor */
+    /* top: 15%;
+    right: 17%; */ /* These are commented out positioning rules, could be useful for specific placement */
+    transform: translate(-50%, -50%); /* Moves the image 50% of its width and height backwards */
+    z-index: 1; /* Sets the stacking order of the image */
+    opacity: none; /* 'none' is an invalid value for opacity, consider using values between 0 and 1 */
+    /* Adjust animation duration to change the element’s speed */ /* Informative comment about the animation */
+    animation: fly 45s linear infinite; /* Applies the 'fly' animation for 50 seconds in a loop */
+    pointer-events: none !important; /* Makes the image non-interactable by the user's pointer */
+    top: 0; /* Positions the image at the top of the container */
+    left: 0; /* Positions the image to the leftmost side of the container */
+    transform: scaleX(1); /* Starts facing right */
+    transform: translateX(-120%) translateY(-120%) rotateZ(0); /* Moves the image diagonally outside the viewport and rotates it by 0 degrees */
+    position: fixed; /* Fixes the image's position relative to the viewport */
+    animation-delay: 1s; /* Starts the animation after a 1-second delay */
+    z-index: 999999; /* Sets a very high stacking order for the image */
+}
+
+@keyframes fly {
+    98.001%, 0% {
+        display: block; /* Ensures the element remains visible throughout the animation */
+        transform: translateX(-200%) translateY(100vh) scaleX(-1); 
+        /* Starts off-screen to the left, near the bottom of the viewport, flipped horizontally to face left */
+    }
+    15% {
+        transform: translateX(100vw) translateY(-100%) scaleX(-1); 
+        /* Moves diagonally upward to the top right off-screen, still facing left */
+    }
+    15.001%, 18% {
+        transform: translateX(100vw) translateY(-30%) scaleX(1); 
+        /* Moves slightly downward on the right side of the screen, flips to face right */
+    }
+    40% {
+        transform: translateX(-200%) translateY(53vh) scaleX(1); 
+        /* Moves diagonally off-screen to the left at mid-viewport height, still facing right */
+    }
+    40.001%, 43% {
+        transform: translateX(-200%) translateY(150%) scaleX(-1); 
+        /* Moves further upward off-screen to the left and flips back to face left */
+    }
+    65% {
+        transform: translateX(100vw) translateY(50vh) scaleX(-1); 
+        /* Moves diagonally downward to the middle-right of the screen, still facing left */
+    }
+    65.001%, 68% {
+        transform: translateX(0vw) translateY(-150%) scaleX(-1); 
+        /* Moves far upward off-screen from the middle of the screen, still facing left */
+    }
+    95% {
+        transform: translateX(80vw) translateY(100vh) scaleX(-1); 
+        /* Moves diagonally downward to the lower right of the screen, still facing left */
+    }
+}
+
+
+
+#cookie {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s;
+    margin-top: 170px;
+        filter: drop-shadow(1px -22px 35px #000000);
+}
+
+#cookie img {
+    height: 150%;
+
+}
+
+#cookie:hover {
+    transform: scale(1.05);
+}
+
+#cookie:active {
+    transform: scale(0.95);
+}
+
+#sectionRight {
+    flex: 0 0 30%;
+    background-color: #d7ccc8;
+    padding: 20px;
+    overflow: visible;
+    border-left: 2px solid #8d6e63;
+    position: relative;
+    z-index: 2;
+    overflow-y: auto;
+}
+
+#rightBeam {
+    width: 100%;
+    height: 2px;
+    background-color: #8d6e63;
+    margin-bottom: 20px;
+}
+
+/* Section upgrade */
+#upgradeTitle {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#upgrade {
+    background-color: #5d4037;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.upgrade-item {
+    background-color: #6d4c41;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    z-index: 5;
+}
+
+.upgrade-item i {
+    font-size: 1.5em;
+    color: white;
+}
+
+.upgrade-item:hover {
+    background-color: #4a2c25;
+    transform: scale(1.1);
+}
+
+.upgrade-item .tooltip {
+    visibility: hidden;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 9999;
+    right: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+
+.upgrade-item:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    z
+}
+
+
+.upgrade-image {
+    width: 32px;
+    /* Ajustez la taille selon vos besoins */
+    height: 32px;
+    object-fit: contain;
+    background-color: none;
+}
+
+/* Section buildings */
+#buildingsTitle {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#buildingsMaster {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.building {
+    background-color: #8d6e63;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+
+}
+
+.building:hover {
+    background-color: #6d4c41;
+    transform: scale(1.02);
+}
+
+.building-icon {
+    flex: 0 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.building-icon i {
+    font-size: 1.5em;
+    color: white;
+}
+
+.building-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.building-name {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.building-cost {
+    font-size: 0.8em;
+    color: #d4a017;
+}
+
+.building-count {
+    flex: 0 0 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color: #d4a017;
+}
+
+.building-image {
+    width: 42px;
+    /* Taille spécifique à définir */
+    height: 42px;
+    object-fit: contain;
+    /* Garde l'aspect de l'image */
+}
+
+
+
+
+/* ======================= Cookie Click Animation ======================= */
+/* ======================= Floating Text Animation ======================= */
+/* This styles the floating text that appears after clicking, 
+   making it rise up and fade out */
+.floating-text {
+    position: fixed;
+    /* Keeps the text in the same place regardless of scrolling */
+    color: #d4a017;
+    /* Sets the text color (gold-like shade) */
+    font-size: 1.9em;
+    /* Makes the text larger */
+    font-weight: bold;
+    /* Makes the text thicker for emphasis */
+    pointer-events: none;
+    /* Prevents the text from blocking mouse interactions */
+    transform: translateY(0);
+    /* Initial position of the floating text (no movement yet) */
+    opacity: 1;
+    /* Text starts fully visible */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    /* Smooth animation for movement and fading */
+    z-index: 999;
+    /* Ensures the text appears above most elements */
+}
+
+/* ======================= Rock Particle Animation ======================= */
+/* This styles the tiny rock particles that fly out after clicking */
+.rock-particle {
+    position: absolute;
+    /* Positions the particles relative to their container */
+    width: 200px;
+    /* Sets the size of each particle */
+    height: 200px;
+    /* Ensures the particles are square-shaped */
+    pointer-events: none;
+    /* Makes sure particles don't interfere with clicking */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    /* Smooth movement and fading animation */
+    z-index: 10;
+    /* Makes the particles appear above the object but below the floating text */
+}
+
+
+
+/* ======================= Custom Pickaxe Cursor ======================= */
+/* This styles the custom pickaxe cursor that follows the mouse */
+#customCursor {
+    position: fixed;
+    /* Makes the cursor stay in the same place, even if the page scrolls */
+    width: 52px;
+    /* Sets the pickaxe image width */
+    height: 52px;
+    /* Sets the pickaxe image height */
+    pointer-events: none;
+    /* Prevents the cursor from interfering with clicks */
+    z-index: 9999;
+    /* Ensures the cursor appears above all other elements */
+    transform-origin: center center;
+    /* Defines the rotation point for animations */
+    transition: transform 0.2s ease;
+    /* Adds smooth transitions for cursor animations */
+}
+
+/* ======================= Pickaxe Shake Animation ======================= */
+/* This creates a shaking effect for the pickaxe cursor */
+.cursor-shake {
+    animation: pickaxe-swing 0.3s ease;
+    /* Applies the shaking animation (defined below) */
+}
+
+/* Define the keyframes for the pickaxe swing animation */
+@keyframes pickaxe-swing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    /* Start with no rotation */
+    25% {
+        transform: rotate(-40deg);
+    }
+
+    /* Swing slightly left */
+    50% {
+        transform: rotate(40deg);
+    }
+
+    /* Swing to the right */
+    75% {
+        transform: rotate(-10deg);
+    }
+
+    /* Swing back left a little */
+    100% {
+        transform: rotate(0deg);
+    }
+
+    /* End with no rotation */
+}
+
+
+.unaffordable {
+    filter: brightness(0.4);
+    cursor: not-allowed;
+    pointer-events: none;
+}

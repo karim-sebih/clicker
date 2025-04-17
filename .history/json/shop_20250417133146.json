@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Pioche",
+        "cost": 15,
+        "cps": 0.1,
+        "image": {
+            "src": "../assets/pixel-art-pickaxe-vector-illustration-retro-video-game-design_1292377-22737-removebg-preview.png",
+            "alt": "pickaxe"
+        },
+        "count": 0
+    },
+    {
+        "name": "Mineur apprenti",
+        "cost": 100,
+        "cps": 1,
+        "image": {
+            "src": "../assets/mining-removebg-preview.png",
+            "alt": "Mineur apprenti"
+        },
+        "count": 0
+    },
+    {
+        "name": "Dynamite",
+        "cost": 1000,
+        "cps": 8,
+        "image": {
+            "src": "../assets/pixel-art-dynamite-lit-dynamite-sticks-vector-icon-8bit-game-white-background_360488-817-removebg-preview.png",
+            "alt": "dynamite"
+        },
+        "count": 0
+    },
+    {
+        "name": "Foreuse mécanique",
+        "cost": 10000,
+        "cps": 47,
+        "image": {
+            "src": "../assets/foreuse-removebg-preview.png",
+            "alt": "foreuse"
+        },
+        "count": 0
+    },
+    {
+        "name": "Mineur Expert",
+        "cost": 50000,
+        "cps": 140,
+        "image": {
+            "src": "../assets/minercoalpixelart.png",
+            "alt": "minercoalpi"
+        },
+        "count": 0
+    },
+    {
+        "name": "Fonderie",
+        "cost": 100000,
+        "cps": 260,
+        "image": {
+            "src": "../assets/fonderie-removebg-preview.png",
+            "alt": "fonderie"
+        },
+        "count": 0
+    }
+  ]
