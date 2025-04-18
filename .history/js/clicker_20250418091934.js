@@ -1,28 +1,26 @@
 document.addEventListener('DOMContentLoaded', async function () {
-    // === Éléments DOM principaux ===
-    const ptsCont = document.getElementById('cookieCounter'); // Affichage des ressources
-    const cpsCont = document.getElementById('cookiePerSecond'); // Affichage du gain par seconde
-    const clicker = document.getElementById('cookie'); // L'image du cookie cliquable
-    const upgradeContainer = document.getElementById('upgrade'); // Conteneur des améliorations
-    const buildingsContainer = document.getElementById('buildingsMaster'); // Conteneur des bâtiments
-    const cookieImg = document.querySelector('#cookie img'); // Image du cookie pour changer selon les upgrades
+    // Éléments DOM
+    const ptsCont = document.getElementById('cookieCounter');
+    const cpsCont = document.getElementById('cookiePerSecond');
+    const clicker = document.getElementById('cookie');
+    const upgradeContainer = document.getElementById('upgrade');
+    const buildingsContainer = document.getElementById('buildingsMaster');
+    const cookieImg = document.querySelector('#cookie img');
 
-    // Vérifie que tous les éléments DOM sont bien présents
     if (!ptsCont || !cpsCont || !clicker || !upgradeContainer || !buildingsContainer || !cookieImg) {
         console.error('Un ou plusieurs éléments DOM sont manquants.');
         return;
     }
 
-    // === Variables de jeu ===
-    let pts = parseFloat(localStorage.getItem('pts')) || 0; // Points (ressources)
-    let cps = parseFloat(localStorage.getItem('cps')) || 0; // Ressources par seconde
-    let cpc = parseFloat(localStorage.getItem('cpc')) || 1; // Ressources par clic
-    let shopData = JSON.parse(localStorage.getItem('shopData')) || []; // Données bâtiments
-    let upgradeData = JSON.parse(localStorage.getItem('upgradeData')) || []; // Données améliorations
+    // Variables de jeu
+    let pts = parseFloat(localStorage.getItem('pts')) || 0;
+    let cps = parseFloat(localStorage.getItem('cps')) || 0;
+    let cpc = parseFloat(localStorage.getItem('cpc')) || 1;
+    let shopData = JSON.parse(localStorage.getItem('shopData')) || [];
+    let upgradeData = JSON.parse(localStorage.getItem('upgradeData')) || [];
     let buildings = Array.isArray(shopData) ? shopData : [];
     let upgrades = Array.isArray(upgradeData) ? upgradeData : [];
 
-    // Applique l’image de la dernière amélioration possédée
     function applyLastOwnedImage() {
         const ownedWithImage = upgrades.filter(up => up.owned && up.multiplier && up.image && up.image.src);
         if (ownedWithImage.length > 0) {
@@ -32,34 +30,29 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    // Charge les données du magasin (bâtiments)
     async function getShopData() {
         const res = await fetch('./json/shop.json');
         if (!res.ok) throw new Error(`Erreur shop.json: ${res.status}`);
         return await res.json();
     }
 
-    // Charge les données des améliorations
     async function getUpgradeData() {
         const res = await fetch('./json/upgrade.json');
         if (!res.ok) throw new Error(`Erreur upgrade.json: ${res.status}`);
         return await res.json();
     }
 
-    // Charge les données des ressources (autres améliorations liées)
     async function getRessourceData() {
         const res = await fetch('./json/ressources.json');
         if (!res.ok) throw new Error(`Erreur ressources.json: ${res.status}`);
         return await res.json();
     }
 
-    // Met à jour l’affichage des ressources et du CPS
     function updateDisplay() {
         ptsCont.textContent = `${Math.floor(pts)} Ressources`;
         cpsCont.textContent = `par seconde : ${Math.round(cps * 10) / 10}`;
     }
 
-    // Ajoute ou enlève la classe "unaffordable" selon le coût
     function updateAffordability() {
         upgrades.forEach((upgrade, index) => {
             const el = document.getElementById(`upgrade${index}`);
@@ -84,7 +77,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Achat d’une amélioration
     function buyUpgrade(upgrade) {
         if (pts >= upgrade.cost && !upgrade.owned) {
             pts -= upgrade.cost;
@@ -105,9 +97,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    // Affiche les améliorations disponibles
     function loadUpgrades() {
         upgradeContainer.innerHTML = '';
+
         let upgradesVisible = 0;
 
         upgrades.forEach((upgrade, index) => {
@@ -149,7 +141,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    // Achat d’un bâtiment
     function buyBuilding(building, index) {
         if (pts >= building.cost) {
             pts -= building.cost;
@@ -169,7 +160,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    // Affiche les bâtiments disponibles
     function loadBuildings() {
         buildingsContainer.innerHTML = '';
         buildings.forEach((building, index) => {
@@ -195,7 +185,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Clic sur le cookie
     clicker.addEventListener('click', function () {
         pts += cpc;
         updateDisplay();
@@ -204,16 +193,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         saveGame();
     });
 
-    // Boucle de génération automatique (CPS), toutes les 10 ms
-    // (peut être désactivée temporairement pour reset le jeu)
-    setInterval(() => {
-        pts += cps / 100;
-        updateDisplay();
-        updateAffordability();
-        saveGame();
-    }, 10);
+/*Peut etre enlever puis remis pour reinitialiser le localstorage */
+    
 
-    // Sauvegarde des données dans le localStorage
     function saveGame() {
         localStorage.setItem('pts', JSON.stringify(pts));
         localStorage.setItem('cps', JSON.stringify(cps));
@@ -222,7 +204,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         localStorage.setItem('upgradeData', JSON.stringify(upgrades));
     }
 
-    // Chargement des données JSON si elles ne sont pas en localStorage
     try {
         if (!Array.isArray(shopData) || shopData.length === 0) {
             shopData = await getShopData();
@@ -239,8 +220,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         return;
     }
 
-    // Initialisation des données de jeu
     upgrades = upgradeData;
+
     updateDisplay();
     applyLastOwnedImage();
     loadUpgrades();
